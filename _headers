@@ -1,0 +1,30 @@
+# Заголовки безопасности для Cloudflare Pages / Netlify.
+# GitHub Pages этот файл не читает — там работает только <meta> CSP из index.html.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.hh.ru; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-XSS-Protection: 0
+  X-Permitted-Cross-Domain-Policies: none
+
+# HTML не кэшируем: подборка вакансий обновляется еженедельно
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Служебные файлы не должны отдаваться наружу
+/_headers
+  X-Robots-Tag: noindex
+  Cache-Control: no-store
+
+/tools/*
+  X-Robots-Tag: noindex
+  Cache-Control: no-store

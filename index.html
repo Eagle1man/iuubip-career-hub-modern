@@ -2,208 +2,330 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.hh.ru; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0e2f5f">
+<meta name="description" content="Центр карьеры Южного университета (ИУБиП): вакансии и стажировки Ростовской области, конструктор резюме, консультации и карьерный трек для студентов.">
+<meta name="format-detection" content="telephone=no">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e2f5f'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='26' font-weight='900' fill='%23e8cf7a' text-anchor='middle'%3EИУ%3C/text%3E%3C/svg%3E">
 <title>Центр карьеры — Южный университет (ИУБиП)</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#f2f3f5;color:#24282e;line-height:1.6;font-size:15px}
-:root{--navy:#0e2f5f;--navy-dark:#082040;--navy-top:#061a36;--gold:#c9a227;--gold-light:#e8cf7a;--ink:#24282e;--muted:#6b7280;--line:#dde1e6}
-.container{max-width:1180px;margin:0 auto;padding:0 20px}
-h1,h2,.serif{font-family:Georgia,"Times New Roman",serif}
-/* Верхняя служебная полоса */
-.topbar{background:#eef1f6;color:#4b5158;font-size:12.5px;border-bottom:1px solid var(--line)}
-.topbar-inner{max-width:1180px;margin:0 auto;padding:6px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.topbar a{color:#4b5158;text-decoration:none}
-.topbar a:hover{text-decoration:underline;color:var(--navy)}
-.topbar .right{margin-left:auto;display:flex;gap:16px;align-items:center}
-.topbar .lvbtn{background:#fff;border:1px solid var(--line);border-radius:3px;font-size:12px;padding:4px 12px;cursor:pointer;font-family:inherit;color:#1f2329}
-/* Шапка */
-.site-head{background:#fff}
-.head-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.head-titles h1{font-size:21px;color:var(--navy);font-weight:700;line-height:1.2}
-.head-titles p{font-size:13px;color:#6b7280;letter-spacing:2px}
-.head-phones{margin-left:auto;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
-.hphone{font-size:12px;color:#6b7280}
-.hphone b{display:block;font-size:18px;color:#111;font-weight:700;white-space:nowrap}
-.btn-call{background:#b02a20;color:#fff;font-size:15px;padding:13px 32px;border-radius:4px}
-.btn-call:hover{background:#8c2119}
-.btn{font-family:inherit;font-size:14px;padding:10px 18px;border-radius:3px;border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s}
+:root{
+  --navy:#0e2f5f;--navy-700:#123a73;--navy-600:#17457e;--navy-050:#eef3fb;--navy-100:#dbe6f7;
+  --gold:#c9a227;--gold-light:#e8cf7a;--gold-050:#faf4e0;
+  --red:#c8102e;--red-dark:#a20d24;
+  --green:#1a9e4b;
+  --ink:#1c2333;--muted:#667085;--line:#e4e8ef;--line-2:#eef1f6;
+  --bg:#f4f6fb;--card:#fff;
+  --radius:18px;--radius-md:14px;--radius-sm:10px;--pill:999px;
+  --shadow:0 1px 2px rgba(16,35,64,.05),0 10px 30px rgba(16,35,64,.07);
+  --shadow-lg:0 22px 55px rgba(16,35,64,.16);
+  --maxw:1180px;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+a{color:var(--navy-600);text-decoration:none}
+a:hover{color:var(--navy)}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.01em}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+/* Кнопки */
+.btn{font-family:inherit;font-size:14px;font-weight:600;padding:11px 20px;border-radius:var(--radius-sm);border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .12s,background .15s,box-shadow .15s,border-color .15s;min-height:44px}
+.btn:active{transform:translateY(1px)}
 .btn-navy{background:var(--navy);color:#fff}
-.btn-navy:hover{background:var(--navy-dark)}
-.btn-gold{background:var(--gold);color:#1d1d1d;font-weight:600}
-.btn-gold:hover{background:#b08d1f;color:#fff}
-.btn-outline{background:#fff;border-color:var(--navy);color:var(--navy)}
-.btn-outline:hover{background:#eef2f8}
-/* Навигация, ряд 1 */
-.unav{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
-.unav-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center;flex-wrap:wrap;scrollbar-width:none;-ms-overflow-style:none}
+.btn-navy:hover{background:var(--navy-700);color:#fff;box-shadow:0 8px 20px rgba(14,47,95,.25)}
+.btn-gold{background:var(--gold);color:#20242c;font-weight:700}
+.btn-gold:hover{background:#b8911f;color:#fff}
+.btn-outline{background:#fff;border-color:var(--line);color:var(--navy)}
+.btn-outline:hover{background:var(--navy-050);border-color:var(--navy-100)}
+.btn-call{background:var(--red);color:#fff;font-weight:700}
+.btn-call:hover{background:var(--red-dark);color:#fff}
+.btn-block{width:100%}
+/* Верхняя служебная полоса */
+.topbar{background:#fff;border-bottom:1px solid var(--line-2);font-size:12.5px}
+.topbar-inner{max-width:var(--maxw);margin:0 auto;padding:7px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.topbar a{color:var(--muted)}
+.topbar a:hover{color:var(--navy)}
+.topbar .right{margin-left:auto;display:flex;gap:14px;align-items:center}
+.lvbtn{background:var(--navy-050);border:1px solid var(--navy-100);border-radius:var(--pill);font-size:12px;padding:5px 14px;cursor:pointer;font-family:inherit;color:var(--navy);font-weight:600}
+.lvbtn:hover{background:var(--navy-100)}
+/* Шапка */
+.site-head{background:#fff;border-bottom:1px solid var(--line-2)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;z-index:500;font-size:13px}
+.skip:focus{left:0}
+.head-inner{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px}
+.head-logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.head-logo svg{height:48px;width:auto;flex:none}
+.head-titles h1{font-size:17px;line-height:1.15}
+.head-titles p{font-size:12.5px;color:var(--muted)}
+.head-phones{margin-left:auto;display:flex;align-items:center;gap:16px}
+.hphone{font-size:15px;font-weight:800;color:var(--navy);white-space:nowrap}
+.hphone small{display:block;font-size:11.5px;font-weight:500;color:var(--muted)}
+/* Навигация (десктоп): сегментные «пилюли» */
+.unav{background:#fff;border-bottom:1px solid var(--line-2);position:sticky;top:0;z-index:70}
+.unav-inner{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .unav-inner::-webkit-scrollbar{display:none}
-.unav button{background:none;border:0;color:#174a94;font-family:inherit;font-weight:700;font-size:16px;padding:15px 18px;cursor:pointer;white-space:nowrap}
-.unav button:hover{color:var(--navy);background:#f2f6fc}
-.unav button.active{color:var(--navy);box-shadow:inset 0 -3px 0 var(--gold)}
-.hero-counts{font-size:19px;margin-top:16px;color:#e6ebf3}
-.hero-counts b{font-size:34px;font-weight:800;color:var(--gold-light);margin:0 4px}
+.unav button{font-family:inherit;font-size:13.5px;font-weight:600;color:var(--navy);background:transparent;border:1px solid transparent;border-radius:var(--pill);padding:9px 18px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.unav button:hover{background:var(--navy-050)}
+.unav button.active{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 6px 16px rgba(14,47,95,.22)}
+/* Нижняя навигация (мобайл) */
+.bnav{display:none}
 /* Hero */
-.hero{background:linear-gradient(180deg,#123a73 0%,var(--navy) 70%);color:#fff;padding:36px 0 34px;border-bottom:4px solid var(--gold)}
-.hero h2{font-size:30px;font-weight:700;margin-bottom:8px}
-.hero h2 span{color:var(--gold-light)}
-.hero p{color:#c3cede;max-width:760px;margin-bottom:20px;font-size:15px}
-.search-panel{background:#fff;border-radius:4px;padding:10px;display:flex;gap:10px;max-width:820px}
-.search-panel input{flex:1;border:1px solid var(--line);border-radius:3px;padding:12px 14px;font-size:15px;font-family:inherit;outline:none;min-width:0}
-.search-panel input:focus{border-color:var(--navy)}
-.search-panel button{white-space:nowrap}
-.fast{margin-top:12px;font-size:13px;color:#9fb0cc;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.fast button{background:rgba(255,255,255,.12);color:#e6ebf3;border:1px solid rgba(255,255,255,.25);border-radius:3px;padding:5px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
-.fast button:hover{background:rgba(255,255,255,.22)}
-.hero-stats{display:flex;gap:36px;margin-top:22px;flex-wrap:wrap}
-.hero-stats div{font-size:13px;color:#9fb0cc}
-.hero-stats b{display:block;font-size:22px;color:#fff;font-family:Georgia,serif}
-.hero-stats b i{font-style:normal;color:var(--gold-light);font-size:15px}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#153d78 55%,var(--navy-600) 100%);color:#fff;position:relative;overflow:hidden;padding:44px 0 40px}
+.hero::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.32),transparent 68%)}
+.hero-inner{max-width:var(--maxw);margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-light);background:rgba(255,255,255,.1);border:1px solid rgba(232,207,122,.35);padding:6px 14px;border-radius:var(--pill);margin-bottom:16px}
+.hero h2{color:#fff;font-size:clamp(24px,4.6vw,42px);max-width:820px;margin-bottom:12px}
+.hero h2 em{font-style:normal;color:var(--gold-light)}
+.hero p.sub{font-size:clamp(14px,1.6vw,16.5px);color:rgba(255,255,255,.86);max-width:660px}
+.search-panel{background:#fff;border-radius:var(--radius);padding:16px;margin-top:26px;box-shadow:var(--shadow-lg);display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:820px}
+.search-panel input{flex:1;min-width:200px;font-family:inherit;font-size:16px;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-sm);outline:none;color:var(--ink)}
+.search-panel input:focus{border-color:var(--navy-600);box-shadow:0 0 0 3px rgba(23,69,126,.14)}
+.fast{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:rgba(255,255,255,.72)}
+.fast a,.fast button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:7px 15px;border-radius:var(--pill);font-size:12.5px;font-family:inherit;cursor:pointer}
+.fast a:hover,.fast button:hover{background:rgba(255,255,255,.24);color:#fff}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+.hero-stats div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-md);padding:14px 16px}
+.hero-stats b{display:block;font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff;line-height:1.1}
+.hero-stats span{font-size:12px;color:rgba(255,255,255,.75)}
 /* Контент */
-main{padding:24px 0 50px}
-.page{display:none}
+main{padding:28px 20px 90px}
+.page{display:none;animation:fade .25s ease}
 .page.active{display:block}
-.section-head{display:flex;align-items:baseline;gap:14px;margin:4px 0 16px;border-bottom:2px solid var(--navy);padding-bottom:8px}
-.section-head h2{font-size:23px;color:var(--navy)}
-.section-head span{font-size:13px;color:var(--muted)}
-.work{display:grid;grid-template-columns:250px 1fr;gap:20px;align-items:start}
-.side{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:6px 18px 14px;font-size:14px}
-.side h4{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:16px 0 8px;font-family:system-ui,sans-serif}
-.side label{display:flex;gap:8px;align-items:flex-start;margin:8px 0;cursor:pointer;color:#2b2f36;line-height:1.4}
-.side label input{margin-top:4px}
-.side .note{background:#f6f1dd;border-left:3px solid var(--gold);padding:10px 12px;font-size:12.5px;color:#5a5340;margin-top:14px}
-.vacancy{background:#fff;border:1px solid var(--line);padding:20px 22px;margin-bottom:14px;transition:box-shadow .15s}
-.vacancy:hover{box-shadow:0 3px 14px rgba(8,32,64,.12)}
-.vac-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
-.vac-title{font-size:18px;font-weight:700;color:var(--navy);text-decoration:none;font-family:Georgia,serif}
-.vac-title:hover{color:#1a4fa0;text-decoration:underline}
-.vac-salary{font-size:16px;font-weight:700;white-space:nowrap;color:#111}
-.vac-sub{font-size:13.5px;color:#4b5158;margin-top:3px}
-.vac-meta{font-size:12.5px;color:var(--muted);margin-top:5px}
-.vac-desc{font-size:14px;color:#3c424a;margin-top:9px}
-.vac-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.skill{font-size:12px;background:#eef1f6;color:#33415c;border:1px solid #d5dbe5;padding:3px 9px;border-radius:3px}
-.vac-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:15px;padding-top:13px;border-top:1px solid #eef0f3;gap:10px;flex-wrap:wrap}
-.vac-src{font-size:12.5px;color:var(--muted)}
-.vac-src a{color:#1a4fa0}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.section-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.section-head h2{font-size:clamp(19px,2.4vw,25px)}
+.section-head span{font-size:13.5px;color:var(--muted)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+.panel h2{font-size:19px;margin-bottom:10px}
+.lead{font-size:15px;color:#3d4657;margin-bottom:14px}
+.legal{font-size:12.5px;color:var(--muted);margin-top:12px}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+/* Формы */
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input,.field select,.field textarea,#filter{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fff;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus,#filter:focus{border-color:var(--navy-600);box-shadow:0 0 0 3px rgba(23,69,126,.14)}
+.times{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.times button{font-family:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--line);background:#fff;border-radius:var(--pill);cursor:pointer;color:var(--navy)}
+.times button:hover{background:var(--navy-050);border-color:var(--navy-100)}
+.ok{background:#eaf7ee;border:1px solid #bfe4cb;color:#14663a;border-radius:var(--radius-md);padding:14px 16px;font-size:14px}
+/* Раскладка «фильтры + список» */
+.work{display:grid;grid-template-columns:268px 1fr;gap:22px;align-items:start}
+.side{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:sticky;top:80px}
+.filter-row{margin-bottom:14px;max-width:320px}
+.side h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 8px;font-weight:700}
+.side h4:first-child{margin-top:0}
+.side label{display:flex;gap:9px;align-items:center;font-size:14px;padding:7px 0;cursor:pointer;color:#3d4657}
+.side label:hover{color:var(--navy)}
+.side input{accent-color:var(--navy);width:17px;height:17px;flex:none}
+.note{background:var(--gold-050);border-left:3px solid var(--gold);border-radius:8px;padding:12px 14px;font-size:12.5px;color:#6a5518;margin-top:16px;line-height:1.5}
+/* Карточка вакансии */
+.vacancy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s,border-color .16s}
+.vacancy:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--navy-100)}
+.vac-head{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.vac-title{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3}
+.vac-title:hover{color:var(--navy-600);text-decoration:underline}
+.vac-salary{font-size:15px;font-weight:800;color:var(--green);white-space:nowrap;background:#eaf7ee;border-radius:var(--pill);padding:5px 13px}
+.vac-sub{font-size:13.5px;color:#4b5158;margin-top:5px}
+.vac-meta{font-size:12.5px;color:var(--muted);margin-top:6px}
+.vac-desc{font-size:13.5px;color:#4b5158;margin-top:10px}
+.vac-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.skill{background:var(--navy-050);color:var(--navy-600);font-size:12px;font-weight:600;border-radius:var(--pill);padding:4px 12px}
+.ibadge{background:#eaf7ee;color:#14663a;font-size:12px;font-weight:700;border-radius:var(--pill);padding:4px 12px}
+.vac-bottom{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line-2)}
+.vac-src{font-size:12px;color:var(--muted)}
 .vac-actions{display:flex;gap:8px;flex-wrap:wrap}
-.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:28px}
-.panel h2{color:var(--navy);font-size:23px;margin-bottom:6px}
-.panel .lead{color:var(--muted);font-size:14px;margin-bottom:8px}
-.field{margin:15px 0}
-.field>label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#2b2f36}
-.field select,.field textarea{width:100%;border:1px solid #c3c8cf;border-radius:3px;padding:11px 12px;font-size:14px;font-family:inherit;background:#fff}
-.field textarea{min-height:90px;resize:vertical}
-.times{display:flex;gap:8px;flex-wrap:wrap}
-.times label{background:#f4f6f9;border:1px solid var(--line);border-radius:3px;padding:8px 14px;font-size:13.5px;cursor:pointer;font-weight:400}
-.times input{margin-right:6px}
-.legal{font-size:12px;color:var(--muted);margin-top:12px}
-.ok{background:#f0f6ef;border:1px solid #9dbf9f;border-left:4px solid #2e7d32;padding:24px;font-size:15px;color:#1d4d24}
-.track-hero{display:flex;gap:20px;align-items:center;background:linear-gradient(120deg,#0e2f5f,#17457e);padding:24px;margin-bottom:18px}
-.ring{width:104px;height:104px;flex:none}
-.timeline{position:relative;margin:4px 0 4px 6px;padding-left:36px}
-.timeline:before{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:3px;background:#e3e6ea}
-.tstep{position:relative;background:#fff;border:1px solid var(--line);padding:14px 16px;margin-bottom:12px;font-size:14px}
-.tstep .dot{position:absolute;left:-31px;top:15px;width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;background:var(--navy);color:var(--gold-light)}
-.tstep.done{border-left:3px solid var(--navy)}
-.tstep.done b{color:var(--navy)}
-.tstep.now{border:1px solid var(--gold);border-left:4px solid var(--gold);box-shadow:0 3px 14px rgba(201,162,39,.25)}
-.tstep.now .dot{background:var(--gold);color:#1d1d1d}
-.tstep.now b{color:var(--navy)}
-.tstep.locked{background:#f6f7f9;color:#8a9099}
-.tstep.locked .dot{background:#cfd5dd;color:#fff}
-.tstep.locked b{color:#6b7280}
-.tstep .date{font-size:12px;color:var(--muted);margin-top:2px}
-.minibar{background:#e3e6ea;height:8px;margin-top:8px;max-width:260px}
-.minibar div{height:100%;background:linear-gradient(90deg,var(--navy),var(--gold))}
-@media(max-width:600px){.track-hero{flex-direction:column;text-align:center}}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
-.step{border:1px solid var(--line);border-top:3px solid var(--navy);padding:14px 16px;font-size:13.5px;background:#fff}
-.step.locked{border-top-color:#c3c8cf;background:#f7f8fa;color:#8a9099}
-.step b{display:block;font-size:14px;margin-bottom:3px;color:var(--navy)}
-.step.locked b{color:#6b7280}
-.step .date{font-size:12px;color:var(--muted)}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
-.kpi{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px}
-.kpi b{font-size:27px;display:block;color:var(--navy);font-family:Georgia,serif}
-.kpi span{font-size:13px;color:var(--muted)}
-.brow{display:grid;grid-template-columns:160px 1fr 48px;gap:10px;align-items:center;font-size:13.5px;margin-bottom:9px}
-.btrack{background:#eef0f3;height:22px;overflow:hidden}
-.bfill{height:100%;background:var(--navy)}
-.cta-row{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-footer{background:var(--navy-top);color:#aeb9c9;font-size:13px}
-.foot-grid{max-width:1180px;margin:0 auto;padding:34px 20px 24px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px}
-footer h5{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px;font-family:system-ui,sans-serif;border-bottom:1px solid var(--gold);display:inline-block;padding-bottom:4px}
-footer a{color:#d6dce5;text-decoration:none}
-footer a:hover{text-decoration:underline}
-.foot-bottom{border-top:1px solid #1c2f52;padding:14px 20px;max-width:1180px;margin:0 auto;font-size:12px;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
-.acad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.acad-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px;cursor:pointer;transition:box-shadow .15s}
-.acad-card:hover{box-shadow:0 3px 14px rgba(8,32,64,.12)}
-.acad-card h3{font-family:Georgia,serif;font-size:17px;color:var(--navy);margin-bottom:4px}
+.backlink{margin-bottom:14px}
+.acad-title{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--navy)}
+.acad-sub{font-size:13.5px;color:#4b5158;margin:8px 0 16px;line-height:1.6}
+/* Академии */
+.acad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.acad-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px;cursor:pointer;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s,border-color .16s;position:relative;overflow:hidden}
+.acad-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--navy),var(--gold))}
+.acad-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--navy-100)}
+.acad-card h3{font-size:15.5px;margin-bottom:6px}
 .acad-card p{font-size:13px;color:var(--muted)}
-.acad-card .cnt{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:var(--navy)}
-.acad-card .go{display:inline-block;margin:10px 0 0 10px;font-size:13px;color:#1a4fa0}
-.backlink{margin-bottom:12px}
-.acad-title{font-family:Georgia,serif;font-size:20px;color:var(--navy);margin:2px 0 2px}
-.acad-sub{font-size:13px;color:var(--muted);margin-bottom:14px}
-.rb-steps{display:flex;gap:6px;margin-bottom:20px}
-.rb-steps span{flex:1;text-align:center;font-size:11.5px;color:var(--muted);padding-top:8px;border-top:3px solid #d5dbe5}
-.rb-steps span.on{color:var(--navy);border-color:var(--gold);font-weight:700}
-.rb-opt{display:block;border:1px solid var(--line);padding:11px 13px;margin:8px 0;cursor:pointer;font-size:14px;background:#fff}
-.rb-opt:hover{border-color:var(--navy)}
-.rb-opt input{margin-right:9px}
-.rb-check{display:inline-block;background:#f4f6f9;border:1px solid var(--line);padding:8px 13px;margin:0 8px 8px 0;font-size:13.5px;cursor:pointer}
-.rb-check input{margin-right:6px}
-.rb-nav{display:flex;justify-content:space-between;margin-top:20px}
-.rb-hint{background:#f6f1dd;border-left:3px solid var(--gold);padding:10px 12px;font-size:13px;color:#5a5340;margin:10px 0 14px}
-.rb-preview{border:1px solid var(--line);padding:22px;background:#fbfbfc;font-size:14px}
-.rb-preview h3{font-family:Georgia,serif;color:var(--navy);font-size:20px;margin-bottom:2px}
-.rb-photo{width:120px;height:150px;object-fit:cover;border:1px solid var(--line);background:#fff}
-.rb-preview .pos{font-weight:700;margin:6px 0 2px}
-.rb-preview .sec{margin-top:12px}
-.rb-preview .sec b{display:block;color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
-.amb-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.amb-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
-.amb-logo{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex:none;font-family:Arial,sans-serif}
-.amb-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:22px}
-.amb-card h3{font-family:Georgia,serif;color:var(--navy);font-size:19px;margin-bottom:2px}
-.amb-fit{font-size:12.5px;color:var(--muted);margin-bottom:10px}
-.amb-card ul{margin:8px 0 8px 18px;font-size:13.5px;color:#3c424a}
-.amb-card li{margin-bottom:4px}
-.amb-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-@media(max-width:860px){.amb-grid{grid-template-columns:1fr}}
-.slogan{font-family:Georgia,serif;font-size:22px;color:var(--navy);text-align:center;margin:2px 0}
-.slogan-sub{text-align:center;color:var(--muted);font-size:13.5px;margin:6px 0 16px}
-.ctrack{position:relative;margin:6px 0;padding-left:28px}
-.ctrack:before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:3px;background:linear-gradient(var(--navy),var(--gold))}
-.cnode{position:relative;background:#fff;border:1px solid var(--line);padding:16px 18px;margin-bottom:12px}
-.cnode:before{content:"";position:absolute;left:-25px;top:22px;width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%}
-.cnode .lvl{font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
-.cnode h3{font-family:Georgia,serif;color:var(--navy);font-size:18px;margin:2px 0 4px}
-.cnode .sal{font-size:23px;font-weight:800;color:var(--navy)}
-.cnode .sal small{font-size:13px;color:var(--muted);font-weight:400}
-.cnode p{font-size:13.5px;color:#3c424a;margin-top:6px}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
-.pill{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13.5px;cursor:pointer;font-family:inherit;color:#2b2f36}
-.pill:hover{border-color:var(--navy)}
-.pill.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}
-.ibadge{display:inline-block;background:#eef6ee;border:1px solid #9dbf9f;color:#1d4d24;font-size:12px;font-weight:700;padding:3px 10px;border-radius:3px;white-space:nowrap}
-#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:#101418;color:#fff;padding:12px 20px;border-left:4px solid var(--gold);font-size:14px;opacity:0;transition:.25s;z-index:100;max-width:92%}
+.acad-card .cnt{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--navy-600);background:var(--navy-050);border-radius:var(--pill);padding:4px 12px}
+.acad-card .go{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--gold)}
+/* Пилюли-фильтры */
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-family:inherit;font-size:13.5px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:var(--pill);padding:9px 18px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;min-height:40px}
+.pill:hover{background:var(--navy-050);border-color:var(--navy-100)}
+.pill.on{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 6px 16px rgba(14,47,95,.2)}
+/* Конструктор резюме */
+.rb-steps{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.rb-steps span{font-size:12px;font-weight:600;color:var(--muted);background:var(--line-2);border-radius:var(--pill);padding:6px 13px}
+.rb-steps span.on{background:var(--navy);color:#fff}
+.rb-opt{display:block;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:border-color .15s,background .15s}
+.rb-opt:hover{border-color:var(--navy-100);background:var(--navy-050)}
+.rb-opt input{margin-right:8px;accent-color:var(--navy)}
+.rb-opt:has(input:checked){border-color:var(--navy);background:var(--navy-050)}
+.rb-hint{background:var(--gold-050);border-left:3px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:12.5px;color:#6a5518;margin-bottom:14px;line-height:1.55}
+.rb-nav{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.rb-preview{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;font-size:13.5px;line-height:1.65}
+.rb-preview h3{font-size:18px;margin-bottom:4px}
+.rb-preview .pos{margin:10px 0;color:var(--navy-600);font-weight:700}
+.rb-preview .sec{margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)}
+.rb-photo{width:96px;height:96px;object-fit:cover;border-radius:var(--radius-sm);border:1px solid var(--line)}
+/* Амбассадоры и кураторы */
+.amb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.amb-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s}
+.amb-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.amb-head{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.amb-logo{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;flex:none}
+.amb-head h3{font-size:16px}
+.amb-fit{font-size:12.5px;color:var(--muted)}
+.amb-card ul{list-style:none;display:grid;gap:9px;font-size:13.5px;color:#3d4657}
+.amb-card ul li{padding-left:16px;position:relative}
+.amb-card ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.amb-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+/* Карьерный трек */
+.slogan{font-size:clamp(17px,2.4vw,22px);font-weight:800;color:var(--navy);line-height:1.35;margin-bottom:8px}
+.slogan-sub{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+.ctrack{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.cnode{background:linear-gradient(180deg,#fff,var(--navy-050));border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.cnode .lvl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold)}
+.cnode h3{font-size:16px;margin:8px 0}
+.cnode .sal{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.cnode .sal small{font-size:11.5px;font-weight:600;color:var(--muted)}
+.cnode p{font-size:13px;color:#4b5158}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:16px}
+.kpi{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-600) 100%);color:#fff;border-radius:var(--radius);padding:22px}
+.kpi b{display:block;font-size:clamp(26px,3.6vw,34px);font-weight:800;color:var(--gold-light);line-height:1.1;margin-bottom:6px}
+.kpi span{font-size:13px;color:rgba(255,255,255,.84)}
+.brow{margin-bottom:14px}
+.brow .btop{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px;color:#3d4657}
+.btrack{height:9px;background:var(--line-2);border-radius:var(--pill);overflow:hidden}
+.bfill{height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));border-radius:var(--pill)}
+/* Прогресс-трек студента */
+.track-hero{background:linear-gradient(135deg,var(--navy),var(--navy-600));color:#fff;border-radius:var(--radius);padding:22px;margin-bottom:16px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.track-hero h2{color:#fff}
+.track-hero p{color:rgba(255,255,255,.85);font-size:13.5px}
+.ring{width:96px;height:96px;border-radius:50%;border:8px solid rgba(255,255,255,.22);border-top-color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;flex:none}
+.timeline{display:grid;gap:12px}
+.tstep{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius-sm);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow)}
+.tstep .dot{width:34px;height:34px;border-radius:50%;background:var(--line-2);color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+.tstep h4{font-size:15px;margin-bottom:4px}
+.tstep p{font-size:13px;color:#4b5158}
+.tstep .date{font-size:12px;color:var(--muted);margin-top:6px}
+.tstep.done{border-left-color:var(--green)}
+.tstep.done .dot{background:var(--green);color:#fff}
+.tstep.now{border-left-color:var(--gold);box-shadow:var(--shadow-lg)}
+.tstep.now .dot{background:var(--gold);color:#20242c}
+.tstep.locked{opacity:.62}
+.minibar{height:8px;background:var(--line-2);border-radius:var(--pill);overflow:hidden;margin-top:8px}
+.minibar i{display:block;height:100%;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px;box-shadow:var(--shadow)}
+.step b{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;align-items:center;justify-content:center;font-size:13px;margin-bottom:10px}
+.step h4{font-size:15px;margin-bottom:6px}
+.step p{font-size:13px;color:#4b5158}
+/* Подвал */
+footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;margin-top:20px}
+.foot-grid{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.foot-grid h5{color:#fff;font-size:14px;margin-bottom:10px}
+.foot-grid p{font-size:13px;line-height:1.75}
+.foot-grid a{color:rgba(255,255,255,.78)}
+.foot-grid a:hover{color:var(--gold-light)}
+.foot-bottom{max-width:var(--maxw);margin:24px auto 0;padding:16px 20px 0;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.6)}
+/* Модальное окно и тост */
+#callModal{z-index:200}
+#callBox{max-width:440px;width:94%;margin:0;max-height:92vh;overflow:auto}
+#toast{position:fixed;left:50%;transform:translateX(-50%) translateY(20px);bottom:28px;background:var(--navy);color:#fff;padding:13px 22px;border-radius:var(--pill);font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:300;max-width:90vw;text-align:center;box-shadow:var(--shadow-lg)}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:920px){.work{grid-template-columns:1fr}.side{display:none}.kpis{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr 1fr}.head-phones{display:none}.hero h2{font-size:24px}.search-panel{flex-direction:column}.acad-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.topbar{display:none}.steps{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}.head-inner{padding:10px 14px;gap:10px}.head-titles h1{font-size:17px}.head-titles p{letter-spacing:1px}.unav-inner{flex-wrap:nowrap;overflow-x:auto}.unav button{font-size:14px;padding:12px 14px}.hero{padding:24px 0 26px}.hero h2{font-size:22px}.search-panel button{padding:13px}.hero-counts{font-size:16px}.hero-counts b{font-size:26px}.hero-stats{gap:16px}.acad-grid{grid-template-columns:1fr}.vacancy{padding:16px}.vac-head{flex-wrap:wrap}.vac-salary{font-size:15px}.brow{grid-template-columns:104px 1fr 40px;font-size:12.5px}.panel{padding:18px}.section-head{flex-wrap:wrap;gap:6px}.section-head h2{font-size:19px}.rb-steps span{font-size:10px}.btn{min-height:44px}input[type=text],select,textarea{font-size:16px}.times label{padding:10px 14px}.topbar-inner{gap:10px}.head-phones{display:flex;gap:10px;margin-left:auto}.hphone{display:none}.btn-call{padding:11px 18px;font-size:14px}}
+/* Доступность */
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* ===== Планшет ===== */
+@media (max-width:1024px){
+  .work{grid-template-columns:1fr}
+  .side{position:static}
+}
+/* ===== Мобильные (mobile-first основная логика навигации) ===== */
+@media (max-width:860px){
+  body{font-size:15px}
+  .container,main{padding-left:16px;padding-right:16px}
+  .topbar{display:none}
+  .site-head{top:0}
+  .head-inner{padding:10px 16px;gap:10px}
+  .head-logo svg{height:38px}
+  .head-titles h1{font-size:14.5px}
+  .head-titles p{display:none}
+  .head-phones{margin-left:auto;gap:8px}
+  .hphone{display:none}
+  .head-phones .btn-outline{display:none}
+  .btn-call{padding:10px 16px;font-size:13.5px;min-height:40px}
+  .unav{display:none}
+  main{padding-top:18px;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+  .hero{padding:28px 0 26px}
+  .hero-inner{padding:0 16px}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}
+  .search-panel{padding:12px;border-radius:var(--radius-md);gap:8px}
+  .search-panel input{min-width:100%;font-size:16px}
+  .search-panel .btn{width:100%}
+  .fast{font-size:12.5px}
+  .panel{padding:16px;border-radius:var(--radius-md)}
+  .vacancy{padding:16px}
+  .vac-salary{font-size:14px}
+  .vac-actions{width:100%}
+  .vac-actions .btn{flex:1}
+  .amb-grid{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column}
+  #toast{bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+  #callModal{align-items:flex-end!important}
+  #callBox{width:100%!important;max-width:100%!important;border-radius:22px 22px 0 0!important;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+  .btn-row{flex-direction:column}
+  .btn-row .btn{width:100%}
+  /* Нижняя навигация «как в приложении» */
+  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:150;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+  .bnav button{background:none;border:0;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:var(--muted);padding:8px 2px;border-radius:12px;cursor:pointer;min-height:52px;justify-content:center;transition:color .15s,background .15s}
+  .bnav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .bnav button.active{color:var(--navy);background:var(--navy-050)}
+  /* Шторка «Ещё» и фильтры */
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:160;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -18px 50px rgba(16,35,64,.24);padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .26s ease;max-height:82vh;overflow:auto}
+  .sheet.open{transform:translateY(0)}
+  .sheet-grip{width:44px;height:5px;border-radius:var(--pill);background:var(--line);margin:0 auto 14px}
+  .sheet h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
+  .sheet-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .sheet-list button{font-family:inherit;font-size:14px;font-weight:600;text-align:left;padding:13px 14px;border:1px solid var(--line);background:#fff;border-radius:var(--radius-sm);cursor:pointer;color:var(--navy);min-height:48px}
+  .sheet-list button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .sheet-close{width:100%;margin-top:12px}
+  #scrim{position:fixed;inset:0;background:rgba(9,20,38,.45);z-index:155;opacity:0;pointer-events:none;transition:opacity .22s}
+  #scrim.open{opacity:1;pointer-events:auto}
+  /* Фильтры на мобильных — кнопка + шторка */
+  .filter-fab{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-bottom:12px}
+  #filters{position:fixed;left:0;right:0;top:auto;bottom:0;z-index:160;max-height:82vh;overflow:auto;border:0;border-radius:22px 22px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 -18px 50px rgba(16,35,64,.24);transform:translateY(105%);transition:transform .26s ease}
+  #filters.open{transform:translateY(0)}
+}
+@media (max-width:480px){
+  .hero h2{font-size:23px}
+  .hero-stats b{font-size:20px}
+  .search-panel .btn{font-size:14px}
+  .section-head h2{font-size:18px}
+  .rb-steps span{font-size:11px;padding:5px 10px}
+  .acad-grid{grid-template-columns:1fr}
+  .sheet-list{grid-template-columns:1fr}
+}
+@media (min-width:861px){.filter-fab{display:none}#scrim{display:none}.sheet{display:none}}
 </style>
 </head>
 <body>
+<a class="skip" href="#vac" onclick="goTab('vac');return false">Перейти к вакансиям</a>
 <div class="topbar"><div class="topbar-inner">
-<a href="https://www.iubip.ru/" target="_blank" rel="noopener">Сведения об образовательной организации</a>
-<a href="https://minobrnauki.gov.ru" target="_blank" rel="noopener">Минобрнауки</a>
-<a href="https://edu.gov.ru" target="_blank" rel="noopener">Минпросвещения России</a>
+<a href="https://www.iubip.ru/" target="_blank" rel="noopener noreferrer">Сведения об образовательной организации</a>
+<a href="https://minobrnauki.gov.ru" target="_blank" rel="noopener noreferrer">Минобрнауки</a>
+<a href="https://edu.gov.ru" target="_blank" rel="noopener noreferrer">Минпросвещения России</a>
 <span class="right"><button class="lvbtn" onclick="lvToggle()">Версия для слабовидящих</button></span>
 </div></div>
 <header class="site-head"><div class="head-inner">
-<a href="#" onclick="goTab('vac');return false" style="display:flex;align-items:center;gap:16px;text-decoration:none">
+<a class="head-logo" href="#" onclick="goTab('vac');return false" aria-label="Центр карьеры Южного университета">
 <svg width="96" height="62" viewBox="0 0 96 62" role="img" aria-label="Логотип Южного университета (ИУБиП)">
 <ellipse cx="48" cy="31" rx="44" ry="27" fill="none" stroke="#0e2f5f" stroke-width="2.5"/>
 <ellipse cx="48" cy="31" rx="26" ry="27" fill="none" stroke="#0e2f5f" stroke-width="1.4"/>
@@ -211,15 +333,15 @@ footer a:hover{text-decoration:underline}
 <line x1="5" y1="31" x2="91" y2="31" stroke="#0e2f5f" stroke-width="1.4"/>
 <text x="48" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="900" fill="#c8102e" stroke="#ffffff" stroke-width="4" paint-order="stroke">ИУБиП</text>
 </svg>
-<span class="head-titles"><h1>ЮЖНЫЙ УНИВЕРСИТЕТ (ИУБиП)</h1><p>SOUTHERN UNIVERSITY (IMBL)</p></span></a>
+<span class="head-titles"><h1>ЮЖНЫЙ УНИВЕРСИТЕТ (ИУБиП)</h1><p>Центр карьеры</p></span></a>
 <div class="head-phones">
-<div class="hphone">Горячая линия (звонок бесплатный)<b><span style="color:#1a9e4b">&#9742; </span>8 800 77-55-012</b></div>
-<div class="hphone">Приёмная комиссия<b><span style="color:#1a9e4b">&#9742; </span>8 (863) 245-45-65</b></div>
-<a class="btn btn-outline" href="https://www.iubip.ru/tsentr-karery/" target="_blank" rel="noopener">Центр карьеры</a>
+<div class="hphone">Горячая линия — звонок бесплатный<b>&#9742; 8 800 77-55-012</b></div>
+<div class="hphone">Приёмная комиссия<b>&#9742; 8 (863) 245-45-65</b></div>
+<a class="btn btn-outline" href="https://www.iubip.ru/tsentr-karery/" target="_blank" rel="noopener noreferrer">Центр карьеры</a>
 <button class="btn btn-call" onclick="openCallModal()">Заказать звонок</button>
 </div>
 </div></header>
-<nav class="unav"><div class="unav-inner">
+<nav class="unav" aria-label="Разделы сайта"><div class="unav-inner">
 <button class="active" data-tab="vac">Вакансии</button>
 <button data-tab="intern">Стажировки</button>
 <button data-tab="resume">Конструктор резюме</button>
@@ -230,23 +352,49 @@ footer a:hover{text-decoration:underline}
 <button data-tab="about">О центре</button>
 <button data-tab="contacts">Контакты</button>
 </div></nav>
-<section class="hero"><div class="container">
-<h2>Карьера выпускника <span>начинается здесь</span></h2>
-<p>Живая подборка вакансий Ростовской области с портала «Работа России» + поиск похожих на hh.ru. Для студентов очной, вечерней и заочной форм. Помогаем с резюме, практикой и первым местом работы.</p>
-<div class="search-panel"><input id="search" type="text" placeholder="Должность, компания или навык — например, «юрист»"><button class="btn btn-gold" onclick="heroSearch()">Найти работу</button></div>
-<div class="hero-counts">Сейчас на сайте: <b id="cntVac">24</b> вакансий · <b id="cntInt">16</b> стажировок</div>
+<section class="hero"><div class="hero-inner">
+<span class="eyebrow">Центр карьеры · Ростовская область</span>
+<h2>Карьера выпускника <em>начинается здесь</em></h2>
+<p class="sub">Живая подборка вакансий Ростовской области с портала «Работа России» и поиск похожих на hh.ru. Для студентов очной, вечерней и заочной форм: помогаем с резюме, практикой и первым местом работы.</p>
+<div class="search-panel"><input id="search" type="text" placeholder="Должность, компания или навык — например, «юрист»" aria-label="Поиск вакансий"><button class="btn btn-gold" onclick="heroSearch()">Найти работу</button></div>
 <div class="fast"><span>Быстрый поиск:</span><button onclick="q('Менеджер')">менеджер по продажам</button><button onclick="q('Юрист')">юрист</button><button onclick="q('Экономист')">экономист</button><button onclick="q('удалённо')">удалённо</button><button onclick="q('HR')">hr-специалист</button></div>
 <div class="hero-stats">
-<div><b>5</b>академий и колледж</div>
-<div><b>88 <i>%</i></b>трудоустроены за 6 месяцев</div>
-<div><b>78 500 <i>₽</i></b>средняя стартовая зарплата</div>
+<div><b id="cntVac">24</b><span>вакансий в подборке</span></div>
+<div><b id="cntInt">16</b><span>стажировок и практик</span></div>
+<div><b>5</b><span>академий и колледж</span></div>
+<div><b>88%</b><span>трудоустроены за 6 месяцев</span></div>
 </div>
 </div></section>
+<div id="scrim" onclick="closeSheets()"></div>
+<nav class="bnav" aria-label="Быстрая навигация">
+<button class="active" data-tab="vac"><svg viewBox="0 0 24 24"><path d="M3 7h18v13H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>Вакансии</button>
+<button data-tab="intern"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c0 1 2.7 2 6 2s6-1 6-2v-5"/></svg>Стажировки</button>
+<button data-tab="resume"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Резюме</button>
+<button data-tab="book"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>Запись</button>
+<button onclick="toggleMore()"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Ещё</button>
+</nav>
+<div class="sheet" id="moreSheet" role="dialog" aria-label="Все разделы">
+<div class="sheet-grip"></div>
+<h4>Все разделы</h4>
+<div class="sheet-list">
+<button data-tab="vac">Вакансии</button>
+<button data-tab="intern">Стажировки</button>
+<button data-tab="resume">Конструктор резюме</button>
+<button data-tab="amb">Амбассадоры</button>
+<button data-tab="book">Консультации</button>
+<button data-tab="prog">Студентам</button>
+<button data-tab="dash">Аналитика</button>
+<button data-tab="about">О центре</button>
+<button data-tab="contacts">Контакты</button>
+</div>
+<button class="btn btn-outline sheet-close" onclick="closeSheets()">Закрыть</button>
+</div>
 <main class="container">
 <section id="vac" class="page active">
 <div class="section-head"><h2>Вакансии</h2><span id="count"></span></div>
 <div class="work">
-<aside class="side">
+<button class="btn btn-outline filter-fab" onclick="toggleFilters()">Фильтры и направления</button>
+<aside class="side" id="filters">
 <h4>Направление подготовки</h4>
 <label><input type="radio" name="dir" value="all" checked> Все направления</label>
 <label><input type="radio" name="dir" value="Юриспруденция"> Юриспруденция</label>
@@ -268,7 +416,7 @@ footer a:hover{text-decoration:underline}
 <div class="note">Каждая вакансия проверена Центром карьеры: официальный договор, наставник, возможность оформления практики.</div>
 </aside>
 <div>
-<div style="margin-bottom:14px"><select id="filter" style="border:1px solid #c3c8cf;border-radius:3px;padding:10px 12px;font-size:14px;font-family:inherit;max-width:280px">
+<div class="filter-row"><select id="filter" aria-label="Направление подготовки">
 <option value="all">Все направления</option><option>Юриспруденция</option><option>Психология</option><option>HR</option><option>Менеджмент</option><option>Экономика</option><option>Бухучёт</option><option>IT</option><option>Логистика</option><option>Туризм</option><option>Медицина</option>
 </select></div>
 <div id="acadView">
@@ -308,22 +456,22 @@ footer a:hover{text-decoration:underline}
 <ul><li><b>Делает:</b> представляет Яндекс в вузе: ивенты, контент, комьюнити. Направления — от разработки до маркетинга и HR.</li>
 <li><b>Получает:</b> обучение у экспертов, поездку в Москву, мерч и бонусы. Отбирают 60 амбассадоров.</li>
 <li><b>Условия:</b> студент 2 курса и выше, 5–10 часов в неделю. Отбор: заявка → анкета → задание → видеоинтервью, результаты 16 октября. Не оплачивается.</li></ul>
-<div class="amb-links"><a class="btn btn-navy" href="https://yandex.ru/yaintern/uteam" target="_blank" rel="noopener">Подать заявку в U-Team</a><a class="btn btn-outline" href="https://yandex.ru/yaintern" target="_blank" rel="noopener">Стажировки</a></div></div>
+<div class="amb-links"><a class="btn btn-navy" href="https://yandex.ru/yaintern/uteam" target="_blank" rel="noopener noreferrer">Подать заявку в U-Team</a><a class="btn btn-outline" href="https://yandex.ru/yaintern" target="_blank" rel="noopener noreferrer">Стажировки</a></div></div>
 <div class="amb-card"><div class="amb-head"><span class="amb-logo" style="background:#0077FF;font-size:17px">VK</span><div><h3>VK — амбассадоры</h3><div class="amb-fit">Подойдёт: IT, гуманитарные технологии (контент, HR)</div></div></div>
 <ul><li><b>Делает:</b> представляет VK в вузе, ведёт соцсети, помогает запускать студенческие проекты.</li>
 <li><b>Получает:</b> обучение, мерч, сообщество амбассадоров по всей стране.</li>
 <li><b>Условия:</b> студент, активность в соцсетях и вузе. Точные условия набора — на странице программы ниже.</li></ul>
-<div class="amb-links"><a class="btn btn-navy" href="https://education.vk.company/program/ambassadors" target="_blank" rel="noopener">Программа амбассадоров VK</a><a class="btn btn-outline" href="https://hh.ru/search/vacancy?text=VK&area=76" target="_blank" rel="noopener">Вакансии VK на hh.ru</a></div></div>
+<div class="amb-links"><a class="btn btn-navy" href="https://education.vk.company/program/ambassadors" target="_blank" rel="noopener noreferrer">Программа амбассадоров VK</a><a class="btn btn-outline" href="https://hh.ru/search/vacancy?text=VK&area=76" target="_blank" rel="noopener noreferrer">Вакансии VK на hh.ru</a></div></div>
 <div class="amb-card"><div class="amb-head"><span class="amb-logo" style="background:#21A038;font-size:22px">С</span><div><h3>Сбер — амбассадоры в вузах</h3><div class="amb-fit">Подойдёт: экономика и туризм, право, IT · старт потока — октябрь 2026</div></div></div>
 <ul><li><b>Делает:</b> роли «Лидер вуза» (ивенты) и «Контентмейкер» (посты, видео) — активности Сбера в университете.</li>
 <li><b>Получает:</b> образовательный трек от экспертов, сообщество, больше шансов на стажировки, мерч.</li>
 <li><b>Условия:</b> 2 курс и старше, несколько часов в неделю до конца учебного года, нужна справка об обучении. Отбор: заявка → задание → интервью. Не оплачивается. Вопросы: SberU@sber.ru.</li></ul>
-<div class="amb-links"><a class="btn btn-navy" href="https://student.sber.ru/ambassadors" target="_blank" rel="noopener">Подать заявку в Сбер</a><a class="btn btn-outline" href="https://hh.ru/search/vacancy?text=%D1%81%D0%B1%D0%B5%D1%80&area=76" target="_blank" rel="noopener">Вакансии Сбера на hh.ru</a></div></div>
+<div class="amb-links"><a class="btn btn-navy" href="https://student.sber.ru/ambassadors" target="_blank" rel="noopener noreferrer">Подать заявку в Сбер</a><a class="btn btn-outline" href="https://hh.ru/search/vacancy?text=%D1%81%D0%B1%D0%B5%D1%80&area=76" target="_blank" rel="noopener noreferrer">Вакансии Сбера на hh.ru</a></div></div>
 <div class="amb-card"><div class="amb-head"><span class="amb-logo" style="background:#002F6C;font-size:15px">ВТБ</span><div><h3>ВТБ — амбассадоры</h3><div class="amb-fit">Подойдёт: экономика и туризм, право</div></div></div>
 <ul><li><b>Делает:</b> представляет ВТБ в вузе, рассказывает о карьере в банке и Junior-программах.</li>
 <li><b>Получает:</b> обучение, нетворкинг, преимущество при отборе на стажировки банка.</li>
 <li><b>Условия:</b> студент экономических или юридических направлений. Точные условия набора — на странице программы ниже.</li></ul>
-<div class="amb-links"><a class="btn btn-navy" href="https://rabota.vtb.ru/internship/ambassador-program/" target="_blank" rel="noopener">Программа амбассадоров ВТБ</a><a class="btn btn-outline" href="https://hh.ru/search/vacancy?text=%D0%B2%D1%82%D0%B1&area=76" target="_blank" rel="noopener">Вакансии ВТБ на hh.ru</a></div></div>
+<div class="amb-links"><a class="btn btn-navy" href="https://rabota.vtb.ru/internship/ambassador-program/" target="_blank" rel="noopener noreferrer">Программа амбассадоров ВТБ</a><a class="btn btn-outline" href="https://hh.ru/search/vacancy?text=%D0%B2%D1%82%D0%B1&area=76" target="_blank" rel="noopener noreferrer">Вакансии ВТБ на hh.ru</a></div></div>
 </div>
 <div class="panel" style="margin-top:14px"><p class="legal" style="margin:0">Кнопки ведут на официальные страницы программ. Наборы идут волнами и закрываются по дедлайнам — если набор закрыт, оставьте заявку на следующий поток.</p></div>
 </section>
@@ -366,6 +514,37 @@ footer a:hover{text-decoration:underline}
 </div>
 </div>
 </section>
+<section id="dash" class="page">
+<div class="section-head"><h2>Работодателям и аналитика</h2><span>итоги 2025–2026 учебного года</span></div>
+<div class="panel" style="margin-bottom:14px">
+<div class="slogan">«Вкладываясь в образование — вкладываешься в должность и зарплату»</div>
+<div class="slogan-sub">Карьерный трек студента Южного университета: каждая ступень образования открывает следующий уровень дохода. Вилки ориентировочные, Ростов-на-Дону, 2026.</div>
+<div class="ctrack">
+<div class="cnode"><div class="lvl">Ступень 1 · Колледж (СПО)</div><h3>Старт карьеры</h3><div class="sal">35 000 – 60 000 ₽ <small>старт</small></div><p>Сестринское дело, фармация, экономика и бухучёт, туризм и гостеприимство. Должности: медсестра, фармацевт, помощник специалиста, администратор.</p></div>
+<div class="cnode"><div class="lvl">Ступень 2 · Бакалавриат</div><h3>Специалист</h3><div class="sal">55 000 – 100 000 ₽ <small>старт</small></div><p>Юриспруденция, экономика, менеджмент, психология, туризм. Должности: юрист, экономист, менеджер по продажам, HR-специалист.</p></div>
+<div class="cnode"><div class="lvl">Ступень 3 · Магистратура</div><h3>Эксперт и руководитель</h3><div class="sal">80 000 – 150 000 ₽ <small>старт</small></div><p>Финансовые технологии, частное и уголовное право, клиническая психология, управление бизнесом. Должности: аналитик, руководитель направления, эксперт.</p></div>
+</div>
+<p class="legal" style="margin-bottom:0">Ориентиры по открытым вакансиям региона (trudvsem.ru, hh.ru). Реальная зарплата зависит от направления, опыта и работодателя — точные цифры подскажет куратор вашей академии.</p>
+</div>
+<div class="panel" style="margin-bottom:14px">
+<h2>Целевое обучение — учёба за счёт работодателя</h2>
+<p class="lead">Работодатель-заказчик оплачивает учёбу, выпускник отрабатывает у него по договору. Как поступить: найдите предложение заказчика → подайте заявление с отметкой конкурса по целевой квоте → пройдите отбор → заключите договор до начала учебного года (через Госуслуги или у заказчика).</p>
+<div class="cta-row"><a class="btn btn-navy" href="https://www.iubip.ru/abitur/tselevoe-obuchenie/" target="_blank" rel="noopener noreferrer">Инструкция и предложения заказчиков</a></div>
+</div>
+<div class="kpis">
+<div class="kpi"><b>88%</b><span>выпускников работают по специальности через полгода после выпуска</span></div>
+<div class="kpi"><b>78 500 ₽</b><span>медианная стартовая зарплата по опросу выпускников</span></div>
+<div class="kpi"><b id="kpiVac">21</b><span>реальных вакансий в подборке с trudvsem.ru</span></div>
+</div>
+<div class="panel"><h2>Трудоустройство по направлениям подготовки</h2><p class="lead">Опрос выпускников 2024–2025 годов выпуска. Данные обновлены в сентябре 2026 года.</p><div id="bars"></div>
+<p class="legal">Источник вакансий: открытое API «Работы России» (trudvsem.ru), подборка от <span id="dataShort">24.09.2026</span>. Опрос выпускников — внутренний, Центр карьеры.</p>
+<div class="cta-row">
+<a class="btn btn-navy" href="https://hh.ru/search/vacancy?text=&area=76" target="_blank" rel="noopener noreferrer">Вакансии Ростова на hh.ru</a>
+<a class="btn btn-navy" href="https://trudvsem.ru" target="_blank" rel="noopener noreferrer">Работа России</a>
+<a class="btn btn-outline" href="https://www.rabota.ru" target="_blank" rel="noopener noreferrer">Вакансии на rabota.ru</a>
+<a class="btn btn-outline" href="https://hh.ru/employer" target="_blank" rel="noopener noreferrer">Разместить вакансию</a>
+</div></div>
+</section>
 <section id="about" class="page">
 <div class="section-head"><h2>О Центре карьеры</h2><span>с официального сайта ИУБиП</span></div>
 <div class="panel">
@@ -382,7 +561,7 @@ footer a:hover{text-decoration:underline}
 <li style="margin-bottom:6px">Студенты ИУБиП — победители конкурса «Умная стипендия» (Банк «Центр-инвест», фонд «Образование и наука ЮФО»).</li>
 <li style="margin-bottom:6px">Азовская кондитерская фабрика провела занятие по организации складского хранения для будущих логистов.</li>
 </ul>
-<div class="cta-row"><a class="btn btn-navy" href="https://www.iubip.ru/tsentr-karery/" target="_blank" rel="noopener">Официальная страница Центра карьеры</a></div>
+<div class="cta-row"><a class="btn btn-navy" href="https://www.iubip.ru/tsentr-karery/" target="_blank" rel="noopener noreferrer">Официальная страница Центра карьеры</a></div>
 </div>
 </section>
 <section id="contacts" class="page">
@@ -391,44 +570,14 @@ footer a:hover{text-decoration:underline}
 <div class="section-head"><h2>Кураторы академий</h2><span>практика, стажировки, целевое обучение</span></div>
 <div class="amb-grid" id="staffGrid"></div>
 </section>
-<section id="dash" class="page">
-<div class="section-head"><h2>Работодателям и аналитика</h2><span>итоги 2025–2026 учебного года</span></div>
-<div class="panel" style="margin-bottom:14px">
-<div class="slogan">«Вкладываясь в образование — вкладываешься в должность и зарплату»</div>
-<div class="slogan-sub">Карьерный трек студента Южного университета: каждая ступень образования открывает следующий уровень дохода. Вилки ориентировочные, Ростов-на-Дону, 2026.</div>
-<div class="ctrack">
-<div class="cnode"><div class="lvl">Ступень 1 · Колледж (СПО)</div><h3>Старт карьеры</h3><div class="sal">35 000 – 60 000 ₽ <small>старт</small></div><p>Сестринское дело, фармация, экономика и бухучёт, туризм и гостеприимство. Должности: медсестра, фармацевт, помощник специалиста, администратор.</p></div>
-<div class="cnode"><div class="lvl">Ступень 2 · Бакалавриат</div><h3>Специалист</h3><div class="sal">55 000 – 100 000 ₽ <small>старт</small></div><p>Юриспруденция, экономика, менеджмент, психология, туризм. Должности: юрист, экономист, менеджер по продажам, HR-специалист.</p></div>
-<div class="cnode"><div class="lvl">Ступень 3 · Магистратура</div><h3>Эксперт и руководитель</h3><div class="sal">80 000 – 150 000 ₽ <small>старт</small></div><p>Финансовые технологии, частное и уголовное право, клиническая психология, управление бизнесом. Должности: аналитик, руководитель направления, эксперт.</p></div>
-</div>
-<p class="legal" style="margin-bottom:0">Ориентиры по открытым вакансиям региона (trudvsem.ru, hh.ru). Реальная зарплата зависит от направления, опыта и работодателя — точные цифры подскажет куратор вашей академии.</p>
-</div>
-<div class="panel" style="margin-bottom:14px">
-<h2>Целевое обучение — учёба за счёт работодателя</h2>
-<p class="lead">Работодатель-заказчик оплачивает учёбу, выпускник отрабатывает у него по договору. Как поступить: найдите предложение заказчика → подайте заявление с отметкой конкурса по целевой квоте → пройдите отбор → заключите договор до начала учебного года (через Госуслуги или у заказчика).</p>
-<div class="cta-row"><a class="btn btn-navy" href="https://www.iubip.ru/abitur/tselevoe-obuchenie/" target="_blank" rel="noopener">Инструкция и предложения заказчиков</a></div>
-</div>
-<div class="kpis">
-<div class="kpi"><b>88%</b><span>выпускников работают по специальности через полгода после выпуска</span></div>
-<div class="kpi"><b>78 500 ₽</b><span>медианная стартовая зарплата по опросу выпускников</span></div>
-<div class="kpi"><b id="kpiVac">21</b><span>реальных вакансий в подборке с trudvsem.ru</span></div>
-</div>
-<div class="panel"><h2>Трудоустройство по направлениям подготовки</h2><p class="lead">Опрос выпускников 2024–2025 годов выпуска. Данные обновлены в сентябре 2026 года.</p><div id="bars"></div>
-<p class="legal">Источник вакансий: открытое API «Работы России» (trudvsem.ru), подборка от <span id="dataShort">24.09.2026</span>. Опрос выпускников — внутренний, Центр карьеры.</p>
-<div class="cta-row">
-<a class="btn btn-navy" href="https://hh.ru/search/vacancy?text=&area=76" target="_blank" rel="noopener">Вакансии Ростова на hh.ru</a>
-<a class="btn btn-navy" href="https://trudvsem.ru" target="_blank" rel="noopener">Работа России</a>
-<a class="btn btn-outline" href="https://www.rabota.ru" target="_blank" rel="noopener">Вакансии на rabota.ru</a>
-<a class="btn btn-outline" href="https://hh.ru/employer" target="_blank" rel="noopener">Разместить вакансию</a>
-</div></div>
-</section>
+
 </main>
 <footer>
 <div class="foot-grid">
 <div><h5>Центр карьеры</h5><p>Южный университет (ИУБиП)<br>344068, г. Ростов-на-Дону,<br>пр. Михаила Нагибина, 33А/47<br><br>career@iubip.ru<br>8 800 77-55-012</p></div>
 <div><h5>Студентам</h5><p><a href="#" onclick="goTab('vac');return false">Вакансии</a><br><a href="#" onclick="goTab('book');return false">Консультации</a><br><a href="#" onclick="goTab('prog');return false">Карьерный трек</a></p></div>
-<div><h5>Университет</h5><p><a href="https://www.iubip.ru/" target="_blank" rel="noopener">Основной сайт</a><br><a href="https://www.iubip.ru/abitur/tselevoe-obuchenie/" target="_blank" rel="noopener">Целевое обучение</a><br><a href="#" onclick="goTab('dash');return false">Аналитика выпуска</a><br><a href="#" onclick="goTab('book');return false">День карьеры</a></p></div>
-<div><h5>Работодателям</h5><p><a href="https://hh.ru/employer" target="_blank" rel="noopener">Разместить вакансию</a><br><a href="#" onclick="goTab('book');return false">Договор о практике</a><br>пн–пт 9:00–18:00</p></div>
+<div><h5>Университет</h5><p><a href="https://www.iubip.ru/" target="_blank" rel="noopener noreferrer">Основной сайт</a><br><a href="https://www.iubip.ru/abitur/tselevoe-obuchenie/" target="_blank" rel="noopener noreferrer">Целевое обучение</a><br><a href="#" onclick="goTab('dash');return false">Аналитика выпуска</a><br><a href="#" onclick="goTab('book');return false">День карьеры</a></p></div>
+<div><h5>Работодателям</h5><p><a href="https://hh.ru/employer" target="_blank" rel="noopener noreferrer">Разместить вакансию</a><br><a href="#" onclick="goTab('book');return false">Договор о практике</a><br>пн–пт 9:00–18:00</p></div>
 </div>
 <div class="foot-bottom"><span>© 2026 Южный университет (ИУБиП). Все права защищены.</span><span>При использовании материалов ссылка на сайт обязательна.</span></div>
 </footer>
@@ -439,7 +588,7 @@ footer a:hover{text-decoration:underline}
 <div class="field"><label>Ваше имя</label><input id="callName" type="text" placeholder="Как к вам обращаться"></div>
 <div class="field"><label>Телефон</label><input id="callPhone" type="text" placeholder="+7 (___) ___-__-__"></div>
 <div class="field"><label>Тема</label><select id="callTopic"><option>Консультация по карьере</option><option>Практика и стажировка</option><option>Целевое обучение</option><option>Работодателю</option></select></div>
-<div style="display:flex;gap:10px"><button class="btn btn-navy" onclick="submitCall()">Жду звонка</button><button class="btn btn-outline" onclick="closeCallModal()">Отмена</button></div>
+<div class="btn-row"><button class="btn btn-navy" onclick="submitCall()">Жду звонка</button><button class="btn btn-outline" onclick="closeCallModal()">Отмена</button></div>
 <p class="legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
 </div>
 </div>
@@ -499,7 +648,7 @@ const g=document.getElementById('acadGrid');g.innerHTML='';
 ACADS.forEach(a=>{
 const n=acadCount(a.id);
 const el=document.createElement('div');el.className='acad-card';
-el.innerHTML='<h3>'+a.name+'</h3><p>'+a.spec+'</p><span class="cnt">'+n+' '+plural(n,'вакансия','вакансии','вакансий')+'</span><span class="go">Открыть →</span>';
+el.innerHTML='<h3>'+esc(a.name)+'</h3><p>'+esc(a.spec)+'</p><span class="cnt">'+n+' '+plural(n,'вакансия','вакансии','вакансий')+'</span><span class="go">Открыть →</span>';
 el.onclick=()=>{resetFilters();openAcad(a.id)};
 g.appendChild(el);
 });
@@ -514,7 +663,7 @@ currentAcad=id;
 document.getElementById('acadView').style.display='none';
 document.getElementById('vacView').style.display='';
 if(id==='all'){document.getElementById('vacAcadTitle').textContent='Все вакансии';document.getElementById('vacAcadSub').textContent='Все академии и направления подготовки.'}
-else{const a=ACADS.find(x=>x.id===id);document.getElementById('vacAcadTitle').textContent=a.name;document.getElementById('vacAcadSub').innerHTML=a.spec+'. '+a.note+'<br>Руководитель: '+a.head+' · '+a.phone+' · '+a.email}
+else{const a=ACADS.find(x=>x.id===id);document.getElementById('vacAcadTitle').textContent=a.name;document.getElementById('vacAcadSub').innerHTML=esc(a.spec)+'. '+esc(a.note)+'<br>Руководитель: '+esc(a.head)+' · '+esc(a.phone)+' · '+esc(a.email)}
 renderVacs();
 }
 function renderVacs(){
@@ -528,13 +677,13 @@ grid.innerHTML='';
 list.forEach((v,i)=>{
 const link=extLink(v);const hh=hhSearch(v);
 const el=document.createElement('article');el.className='vacancy';
-el.innerHTML='<div class="vac-head"><a class="vac-title" href="'+link+'" target="_blank" rel="noopener">'+v.t+'</a><div class="vac-salary">'+v.s+'</div></div>'
-+'<div class="vac-sub">'+v.c+' · '+v.city+'</div>'
-+'<div class="vac-meta">Опубликовано '+v.date+' · источник: trudvsem.ru · <a href="'+hh+'" target="_blank" rel="noopener" style="color:#0f6cbd">похожие на hh.ru</a></div>'
+el.innerHTML='<div class="vac-head"><a class="vac-title" href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">'+esc(v.t)+'</a><div class="vac-salary">'+esc(v.s)+'</div></div>'
++'<div class="vac-sub">'+esc(v.c)+' · '+esc(v.city)+'</div>'
++'<div class="vac-meta">Опубликовано '+esc(v.date)+' · источник: trudvsem.ru · <a href="'+safeUrl(hh)+'" target="_blank" rel="noopener noreferrer">похожие на hh.ru</a></div>'
 +'<p class="vac-desc">'+DESC+'</p>'
-+'<div class="vac-skills">'+v.tags.map(t=>'<span class="skill">'+t+'</span>').join('')+'</div>'
-+'<div class="vac-bottom"><span class="vac-src">Проверено Центром карьеры · <a href="'+link+'" target="_blank" rel="noopener">открыть карточку вакансии</a></span><span class="vac-actions"><a class="btn btn-outline" href="'+link+'" target="_blank" rel="noopener">Открыть вакансию</a><button class="btn btn-navy">Откликнуться</button></span></div>';
-el.querySelector('button').onclick=()=>{showToast('Отклик отправлен: '+v.c+'. Продолжить — на trudvsem.ru');window.open(link,'_blank')};
++'<div class="vac-skills">'+v.tags.map(t=>'<span class="skill">'+esc(t)+'</span>').join('')+'</div>'
++'<div class="vac-bottom"><span class="vac-src">Проверено Центром карьеры · <a href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">открыть карточку вакансии</a></span><span class="vac-actions"><a class="btn btn-outline" href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">Открыть вакансию</a><button class="btn btn-navy">Откликнуться</button></span></div>';
+el.querySelector('button').onclick=()=>{showToast('Отклик отправлен: '+v.c+'. Продолжить — на trudvsem.ru');window.open(safeUrl(link),'_blank','noopener')};
 grid.appendChild(el);
 });
 if(!grid.innerHTML)grid.innerHTML='<div class="panel">По запросу ничего не нашлось. Позвоните нам: 8 800 77-55-012 — подберём варианты вручную.</div>';
@@ -578,16 +727,16 @@ const link=intLink(v);
 const el=document.createElement('article');el.className='vacancy';
 let actions='';
 if(!v.u){actions='<button class="btn btn-navy">Как попасть</button>'}
-else if(v.u.indexOf('mailto:')===0){actions='<a class="btn btn-navy" href="'+v.u+'">Написать в колледж</a>'}
-else{actions='<a class="btn btn-outline" href="'+link+'" target="_blank" rel="noopener">Открыть программу</a><button class="btn btn-navy">Хочу туда</button>'}
-el.innerHTML='<div class="vac-head"><span class="vac-title" style="cursor:default">'+v.t+'</span><span class="ibadge">'+v.format+'</span></div>'
-+'<div class="vac-sub">'+v.c+'</div>'
-+'<div class="vac-meta">Кому: '+v.forWhom+' · Срок: '+v.dur+'</div>'
-+'<p class="vac-desc">'+v.note+'</p>'
-+'<div class="vac-skills">'+v.tags.map(t=>'<span class="skill">'+t+'</span>').join('')+'</div>'
-+'<div class="vac-bottom"><span class="vac-src">Академии: '+v.acads.map(a=>ASHORT[a]).join(', ')+'</span><span class="vac-actions">'+actions+'</span></div>';
+else if(v.u.indexOf('mailto:')===0){actions='<a class="btn btn-navy" href="'+safeUrl(v.u)+'">Написать в колледж</a>'}
+else{actions='<a class="btn btn-outline" href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">Открыть программу</a><button class="btn btn-navy">Хочу туда</button>'}
+el.innerHTML='<div class="vac-head"><span class="vac-title">'+esc(v.t)+'</span><span class="ibadge">'+esc(v.format)+'</span></div>'
++'<div class="vac-sub">'+esc(v.c)+'</div>'
++'<div class="vac-meta">Кому: '+esc(v.forWhom)+' · Срок: '+esc(v.dur)+'</div>'
++'<p class="vac-desc">'+esc(v.note)+'</p>'
++'<div class="vac-skills">'+v.tags.map(t=>'<span class="skill">'+esc(t)+'</span>').join('')+'</div>'
++'<div class="vac-bottom"><span class="vac-src">Академии: '+v.acads.map(a=>esc(ASHORT[a])).join(', ')+'</span><span class="vac-actions">'+actions+'</span></div>';
 const btn=el.querySelector('button');
-if(btn){if(!v.u){btn.onclick=()=>showToast('ГосСтарт: заявки — через систему «Молодежь России» (18–35 лет). Детали — у куратора академии')}else{btn.onclick=()=>{showToast('Открываем программу: '+v.c);window.open(link,'_blank')}}}
+if(btn){if(!v.u){btn.onclick=()=>showToast('ГосСтарт: заявки — через систему «Молодежь России» (18–35 лет). Детали — у куратора академии')}else{btn.onclick=()=>{showToast('Открываем программу: '+v.c);window.open(safeUrl(link),'_blank','noopener')}}}
 g.appendChild(el);
 });
 if(!g.innerHTML)g.innerHTML='<div class="panel">В этой академии пока нет подборки — загляните во «Все академии» или спросите куратора.</div>';
@@ -603,7 +752,7 @@ const LAWS=[
 function renderLawPanel(){
 const m=document.getElementById('lawPanel');
 if(currentIntAcad!=='all'&&currentIntAcad!=='law'){m.innerHTML='';return}
-m.innerHTML='<div class="panel"><h2 style="font-size:18px">Юристам: суды, МВД, прокуратура</h2><p class="lead">Кнопки ведут в кадровые разделы судов. Кадрами всех районных судов ведает Судебный департамент. По МВД и прокуратуре — официальные сайты (горячая линия прокуратуры РО: +7 (863) 210-55-99). Практику согласуйте с академией: academy_law@iubip.ru.</p><div style="display:flex;gap:8px;flex-wrap:wrap">'+LAWS.map(x=>'<a class="btn btn-outline" style="font-size:13px;padding:8px 14px" href="'+x.u+'" target="_blank" rel="noopener">'+x.name+'</a>').join('')+'</div></div>';
+m.innerHTML='<div class="panel"><h2 style="font-size:18px">Юристам: суды, МВД, прокуратура</h2><p class="lead">Кнопки ведут в кадровые разделы судов. Кадрами всех районных судов ведает Судебный департамент. По МВД и прокуратуре — официальные сайты (горячая линия прокуратуры РО: +7 (863) 210-55-99). Практику согласуйте с академией: academy_law@iubip.ru.</p><div style="display:flex;gap:8px;flex-wrap:wrap">'+LAWS.map(x=>'<a class="btn btn-outline" href="'+safeUrl(x.u)+'" target="_blank" rel="noopener noreferrer">'+esc(x.name)+'</a>').join('')+'</div></div>';
 }
 const MEDS=[
 {name:"РОКБ — вакансии",u:"https://rocb.ru/vakansii"},
@@ -621,11 +770,11 @@ const MEDS=[
 function renderMedPanel(){
 const m=document.getElementById('medPanel');
 if(currentIntAcad!=='all'&&currentIntAcad!=='medic'){m.innerHTML='';return}
-m.innerHTML='<div class="panel"><h2 style="font-size:18px">Куда на практику: отделы кадров медучреждений</h2><p class="lead">Кнопки ведут сразу в разделы «Вакансии» и контакты отделов кадров — там узнавайте о практике и стажировках. Где такого раздела нет, кнопка ведёт на сайт учреждения. Практику согласуйте с медколледжем: med@iubip.ru.</p><div style="display:flex;gap:8px;flex-wrap:wrap">'+MEDS.map(x=>'<a class="btn btn-outline" style="font-size:13px;padding:8px 14px" href="'+x.u+'" target="_blank" rel="noopener">'+x.name+'</a>').join('')+'</div></div>';
+m.innerHTML='<div class="panel"><h2 style="font-size:18px">Куда на практику: отделы кадров медучреждений</h2><p class="lead">Кнопки ведут сразу в разделы «Вакансии» и контакты отделов кадров — там узнавайте о практике и стажировках. Где такого раздела нет, кнопка ведёт на сайт учреждения. Практику согласуйте с медколледжем: med@iubip.ru.</p><div style="display:flex;gap:8px;flex-wrap:wrap">'+MEDS.map(x=>'<a class="btn btn-outline" href="'+safeUrl(x.u)+'" target="_blank" rel="noopener noreferrer">'+esc(x.name)+'</a>').join('')+'</div></div>';
 }
 function renderStaff(){
 const g=document.getElementById('staffGrid');if(!g)return;
-g.innerHTML=ACADS.map(a=>'<div class="amb-card"><h3>'+a.name+'</h3><div class="amb-fit">'+a.spec+'</div><p style="font-size:14px">Руководитель: <b>'+a.head+'</b><br>Тел.: '+a.phone+'<br>Email: <a href="mailto:'+a.email+'">'+a.email+'</a></p></div>').join('');
+g.innerHTML=ACADS.map(a=>'<div class="amb-card"><h3>'+esc(a.name)+'</h3><div class="amb-fit">'+esc(a.spec)+'</div><p style="font-size:14px">Руководитель: <b>'+esc(a.head)+'</b><br>Тел.: '+esc(a.phone)+'<br>Email: <a href="'+safeUrl('mailto:'+a.email)+'">'+esc(a.email)+'</a></p></div>').join('');
 }
 let callFormHTML=null;
 function openCallModal(){const b=document.getElementById('callBox');if(callFormHTML===null)callFormHTML=b.innerHTML;else b.innerHTML=callFormHTML;document.getElementById('callModal').style.display='flex'}
@@ -655,11 +804,11 @@ d.items.forEach(v=>{
 const link=v.alternate_url;
 const roles=(v.professional_roles||[]).slice(0,3).map(x=>'<span class="skill">'+esc(x.name)+'</span>').join('');
 const dt=(v.published_at||'').slice(0,10).split('-').reverse().join('.');
-html+='<div class="vacancy"><div class="vac-head"><a class="vac-title" href="'+link+'" target="_blank" rel="noopener">'+esc(v.name)+'</a><div class="vac-salary">'+hhSalary(v.salary)+'</div></div>'
+html+='<div class="vacancy"><div class="vac-head"><a class="vac-title" href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">'+esc(v.name)+'</a><div class="vac-salary">'+hhSalary(v.salary)+'</div></div>'
 +'<div class="vac-sub">'+esc((v.employer||{}).name||'')+' · '+esc((v.area||{}).name||'')+'</div>'
 +'<div class="vac-meta">Опыт: '+esc((v.experience||{}).name||'любой')+' · опубликовано '+dt+'</div>'
 +'<div class="vac-skills">'+roles+'</div>'
-+'<div class="vac-bottom"><span class="vac-src">Источник: hh.ru · <a href="'+link+'" target="_blank" rel="noopener">открыть на hh.ru</a></span><span class="vac-actions"><a class="btn btn-navy" href="'+link+'" target="_blank" rel="noopener">Откликнуться</a></span></div></div>';
++'<div class="vac-bottom"><span class="vac-src">Источник: hh.ru · <a href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">открыть на hh.ru</a></span><span class="vac-actions"><a class="btn btn-navy" href="'+safeUrl(link)+'" target="_blank" rel="noopener noreferrer">Откликнуться</a></span></div></div>';
 });
 box.innerHTML=html;
 }catch(e){btn.disabled=false;btn.textContent='Загрузить с hh.ru';showToast('hh.ru не ответил — попробуйте позже')}
@@ -671,7 +820,7 @@ document.getElementById('filter').onchange=renderVacs;
 document.querySelectorAll('input[name=dir]').forEach(r=>r.onchange=()=>{document.getElementById('filter').value=r.value;renderVacs()});
 renderAcads();showAcads();
 document.getElementById('bookAcad').innerHTML=ACADS.map(a=>'<option value="'+a.id+'">'+a.name+'</option>').join('');
-function goTab(id){document.querySelectorAll('.unav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));window.scrollTo({top:0,behavior:'smooth'})}
+function goTab(id){document.querySelectorAll('.unav button,.bnav button,.sheet-list button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.unav button').forEach(b=>{b.onclick=()=>goTab(b.dataset.tab)});
 function uSearch(){document.getElementById('search').value=document.getElementById('usearch').value;goTab('vac');openAcad('all')}
 function lvToggle(){const on=document.body.style.zoom!=='130%';document.body.style.zoom=on?'130%':'';showToast(on?'Версия для слабовидящих: крупный шрифт включён':'Обычная версия сайта')}
@@ -845,6 +994,17 @@ document.getElementById('cntVac').textContent=vacs.length;
 document.getElementById('cntInt').textContent=INTERNS.length;
 document.getElementById('kpiVac').textContent=vacs.length;
 document.getElementById('dataShort').textContent=DATA_SHORT;
+
+/* ===== Редизайн: защита ссылок, мобильная навигация и шторки ===== */
+function safeUrl(u){u=String(u==null?"":u);if(/["'<>`\\\s]/.test(u))return "#";return /^(https?:\/\/|mailto:|tel:|#)/i.test(u)?u:"#"}
+function closeSheets(){document.querySelectorAll('.sheet').forEach(function(s){s.classList.remove('open')});var f=document.getElementById('filters');if(f)f.classList.remove('open');var sc=document.getElementById('scrim');if(sc)sc.classList.remove('open')}
+function openSheet(id){closeSheets();var el=document.getElementById(id);if(el)el.classList.add('open');var sc=document.getElementById('scrim');if(sc)sc.classList.add('open')}
+function toggleMore(){var s=document.getElementById('moreSheet');if(!s)return;if(s.classList.contains('open')){closeSheets()}else{openSheet('moreSheet')}}
+function toggleFilters(){var f=document.getElementById('filters');if(!f)return;if(f.classList.contains('open')){closeSheets()}else{openSheet('filters')}}
+document.querySelectorAll('.bnav button[data-tab],.sheet-list button[data-tab]').forEach(function(b){b.onclick=function(){goTab(b.dataset.tab);closeSheets()}});
+document.querySelectorAll('input[name=dir]').forEach(function(r){r.addEventListener('change',closeSheets)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheets()});
+window.addEventListener('resize',function(){if(window.innerWidth>860)closeSheets()});
 </script>
 </body>
 </html>
