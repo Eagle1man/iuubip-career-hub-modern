@@ -64,6 +64,8 @@ h1,h2,h3,h4{line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.0
 .head-phones{margin-left:auto;display:flex;align-items:center;gap:16px}
 .hphone{font-size:15px;font-weight:800;color:var(--navy);white-space:nowrap}
 .hphone small{display:block;font-size:11.5px;font-weight:500;color:var(--muted)}
+.hphone a{color:inherit;text-decoration:none}
+.hphone a:hover{color:var(--navy-700);text-decoration:underline}
 /* Навигация (десктоп): сегментные «пилюли» */
 .unav{background:#fff;border-bottom:1px solid var(--line-2);position:sticky;top:0;z-index:70}
 .unav-inner{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
@@ -107,7 +109,7 @@ main{padding:28px 20px 90px}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap}
 /* Формы */
 .field{margin-bottom:14px}
-.field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field label,.field .lbl{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
 .field input,.field select,.field textarea,#filter{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fff;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
 .field textarea{min-height:96px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus,#filter:focus{border-color:var(--navy-600);box-shadow:0 0 0 3px rgba(23,69,126,.14)}
@@ -119,8 +121,8 @@ main{padding:28px 20px 90px}
 .work{display:grid;grid-template-columns:268px 1fr;gap:22px;align-items:start}
 .side{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:sticky;top:80px}
 .filter-row{margin-bottom:14px;max-width:320px}
-.side h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 8px;font-weight:700}
-.side h4:first-child{margin-top:0}
+.side h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 8px;font-weight:700}
+.side h3:first-child{margin-top:0}
 .side label{display:flex;gap:9px;align-items:center;font-size:14px;padding:7px 0;cursor:pointer;color:#3d4657}
 .side label:hover{color:var(--navy)}
 .side input{accent-color:var(--navy);width:17px;height:17px;flex:none}
@@ -230,7 +232,7 @@ main{padding:28px 20px 90px}
 /* Подвал */
 footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;margin-top:20px}
 .foot-grid{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
-.foot-grid h5{color:#fff;font-size:14px;margin-bottom:10px}
+.foot-grid h3{color:#fff;font-size:14px;margin-bottom:10px}
 .foot-grid p{font-size:13px;line-height:1.75}
 .foot-grid a{color:rgba(255,255,255,.78)}
 .foot-grid a:hover{color:var(--gold-light)}
@@ -292,7 +294,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
   .sheet{position:fixed;left:0;right:0;bottom:0;z-index:160;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -18px 50px rgba(16,35,64,.24);padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .26s ease;max-height:82vh;overflow:auto}
   .sheet.open{transform:translateY(0)}
   .sheet-grip{width:44px;height:5px;border-radius:var(--pill);background:var(--line);margin:0 auto 14px}
-  .sheet h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
+  .sheet h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
   .sheet-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
   .sheet-list button{font-family:inherit;font-size:14px;font-weight:600;text-align:left;padding:13px 14px;border:1px solid var(--line);background:#fff;border-radius:var(--radius-sm);cursor:pointer;color:var(--navy);min-height:48px}
   .sheet-list button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
@@ -325,7 +327,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <span class="right"><button class="lvbtn" onclick="lvToggle()">Версия для слабовидящих</button></span>
 </div></div>
 <header class="site-head"><div class="head-inner">
-<a class="head-logo" href="#" onclick="goTab('vac');return false" aria-label="Центр карьеры Южного университета">
+<a class="head-logo" href="#vac" onclick="goTab('vac');return false" aria-label="Центр карьеры Южного университета">
 <svg width="96" height="62" viewBox="0 0 96 62" role="img" aria-label="Логотип Южного университета (ИУБиП)">
 <ellipse cx="48" cy="31" rx="44" ry="27" fill="none" stroke="#0e2f5f" stroke-width="2.5"/>
 <ellipse cx="48" cy="31" rx="26" ry="27" fill="none" stroke="#0e2f5f" stroke-width="1.4"/>
@@ -335,8 +337,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 </svg>
 <span class="head-titles"><h1>ЮЖНЫЙ УНИВЕРСИТЕТ (ИУБиП)</h1><p>Центр карьеры</p></span></a>
 <div class="head-phones">
-<div class="hphone">Горячая линия — звонок бесплатный<b>&#9742; 8 800 77-55-012</b></div>
-<div class="hphone">Приёмная комиссия<b>&#9742; 8 (863) 245-45-65</b></div>
+<div class="hphone">Горячая линия — звонок бесплатный<b><a href="tel:+78007755012">&#9742; 8 800 77-55-012</a></b></div>
+<div class="hphone">Приёмная комиссия<b><a href="tel:+78632454565">&#9742; 8 (863) 245-45-65</a></b></div>
 <a class="btn btn-outline" href="https://www.iubip.ru/tsentr-karery/" target="_blank" rel="noopener noreferrer">Центр карьеры</a>
 <button class="btn btn-call" onclick="openCallModal()">Заказать звонок</button>
 </div>
@@ -367,15 +369,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 </div></section>
 <div id="scrim" onclick="closeSheets()"></div>
 <nav class="bnav" aria-label="Быстрая навигация">
-<button class="active" data-tab="vac"><svg viewBox="0 0 24 24"><path d="M3 7h18v13H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>Вакансии</button>
-<button data-tab="intern"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c0 1 2.7 2 6 2s6-1 6-2v-5"/></svg>Стажировки</button>
-<button data-tab="resume"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Резюме</button>
-<button data-tab="book"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>Запись</button>
-<button onclick="toggleMore()"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Ещё</button>
+<button class="active" data-tab="vac"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h18v13H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>Вакансии</button>
+<button data-tab="intern"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c0 1 2.7 2 6 2s6-1 6-2v-5"/></svg>Стажировки</button>
+<button data-tab="resume"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Резюме</button>
+<button data-tab="book"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>Запись</button>
+<button onclick="toggleMore()"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Ещё</button>
 </nav>
 <div class="sheet" id="moreSheet" role="dialog" aria-label="Все разделы">
 <div class="sheet-grip"></div>
-<h4>Все разделы</h4>
+<h3>Все разделы</h3>
 <div class="sheet-list">
 <button data-tab="vac">Вакансии</button>
 <button data-tab="intern">Стажировки</button>
@@ -395,7 +397,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <div class="work">
 <button class="btn btn-outline filter-fab" onclick="toggleFilters()">Фильтры и направления</button>
 <aside class="side" id="filters">
-<h4>Направление подготовки</h4>
+<h3>Направление подготовки</h3>
 <label><input type="radio" name="dir" value="all" checked> Все направления</label>
 <label><input type="radio" name="dir" value="Юриспруденция"> Юриспруденция</label>
 <label><input type="radio" name="dir" value="Психология"> Психология</label>
@@ -407,10 +409,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <label><input type="radio" name="dir" value="Логистика"> Логистика</label>
 <label><input type="radio" name="dir" value="Туризм"> Туризм и гостеприимство</label>
 <label><input type="radio" name="dir" value="Медицина"> Медицина и фармация</label>
-<h4>Место работы</h4>
+<h3>Место работы</h3>
 <label><input type="checkbox" checked> Ростов-на-Дону</label>
 <label><input type="checkbox" checked> Удалённо</label>
-<h4>Опыт работы</h4>
+<h3>Опыт работы</h3>
 <label><input type="checkbox" checked> Без опыта — старт карьеры</label>
 <label><input type="checkbox" checked> 1–3 года</label>
 <div class="note">Каждая вакансия проверена Центром карьеры: официальный договор, наставник, возможность оформления практики.</div>
@@ -479,16 +481,16 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <div class="section-head"><h2>Запись на консультацию</h2><span>очно и онлайн</span></div>
 <div class="panel" id="formCard" style="max-width:680px">
 <p class="lead">Разбираем резюме, готовим к собеседованию, подбираем стажировку. Вечерние часы — для работающих студентов вечерней и заочной форм.</p>
-<div class="field"><label>Ваша академия</label><select id="bookAcad"></select></div>
-<div class="field"><label>Тема встречи</label><select id="topic"><option>Разбор резюме</option><option>Подготовка к собеседованию</option><option>Выбор карьерного трека</option><option>Стажировка и практика</option></select></div>
-<div class="field"><label>Дата</label><select id="dateSel"></select></div>
+<div class="field"><label for="bookAcad">Ваша академия</label><select id="bookAcad"></select></div>
+<div class="field"><label for="topic">Тема встречи</label><select id="topic"><option>Разбор резюме</option><option>Подготовка к собеседованию</option><option>Выбор карьерного трека</option><option>Стажировка и практика</option></select></div>
+<div class="field"><label for="dateSel">Дата</label><select id="dateSel"></select></div>
 <div class="field"><label>Время</label><div class="times">
 <label><input type="radio" name="time" checked>17:00</label>
 <label><input type="radio" name="time">18:30</label>
 <label><input type="radio" name="time">20:00</label>
 <label><input type="radio" name="time">Суббота, 11:00</label>
 </div></div>
-<div class="field"><label>Комментарий</label><textarea placeholder="Курс, направление подготовки, куда планируете откликаться"></textarea></div>
+<div class="field"><label for="bookComment">Комментарий</label><textarea id="bookComment" placeholder="Курс, направление подготовки, куда планируете откликаться"></textarea></div>
 <button class="btn btn-navy" onclick="submitForm()">Записаться на консультацию</button>
 <p class="legal">Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с ФЗ-152. Подтверждение придёт в MAX-бот Центра карьеры, напоминание — за час до встречи.</p>
 </div>
@@ -497,8 +499,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <div class="section-head"><h2>Карьерный трек студента</h2><span>выполнено 3 шага из 6 · 40%</span></div>
 <div class="panel">
 <div class="track-hero">
-<svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="11"/><circle cx="60" cy="60" r="50" fill="none" stroke="#e8cf7a" stroke-width="11" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="188" transform="rotate(-90 60 60)"/><text x="60" y="68" text-anchor="middle" fill="#fff" font-size="24" font-weight="800">40%</text></svg>
-<div><div style="font-size:13px;color:#9fb0cc">Уровень «Соискатель» · следующий — «Стажёр»</div><div style="font-family:Georgia,serif;font-size:22px;margin:4px 0">Вы прошли 3 шага из 6</div><div style="font-size:13.5px;color:#c3cede">Резюме, отклик и собеседование — позади. Впереди встречи с работодателями.</div></div>
+<svg class="ring" viewBox="0 0 120 120" role="img" aria-label="Карьерный трек выполнен на 40 процентов — 3 шага из 6"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="11"/><circle cx="60" cy="60" r="50" fill="none" stroke="#e8cf7a" stroke-width="11" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="188" transform="rotate(-90 60 60)"/><text x="60" y="68" text-anchor="middle" fill="#fff" font-size="24" font-weight="800">40%</text></svg>
+<div><div style="font-size:13px;color:#9fb0cc">Уровень «Соискатель» · следующий — «Стажёр»</div><div style="font-size:22px;margin:4px 0;font-weight:800;color:#fff">Вы прошли 3 шага из 6</div><div style="font-size:13.5px;color:#c3cede">Резюме, отклик и собеседование — позади. Впереди встречи с работодателями.</div></div>
 </div>
 <div class="timeline">
 <div class="tstep done"><span class="dot">✓</span><b>Резюме собрано</b><div>Проверено консультантом.</div><div class="date">12 марта 2026</div></div>
@@ -510,7 +512,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 </div>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
 <button class="btn btn-navy" onclick="goTab('vac')">Перейти к вакансиям</button>
-<button class="btn btn-outline" onclick="alert('Ссылка на ваш трек скопирована — отправьте её наставнику.')">Поделиться прогрессом</button>
+<button class="btn btn-outline" onclick="showToast('Ссылка на ваш трек скопирована — отправьте её наставнику.')">Поделиться прогрессом</button>
 </div>
 </div>
 </section>
@@ -555,7 +557,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <div class="step"><b>Постройте трек</b>Конструктор резюме, консультации, встречи с работодателями.</div>
 <div class="step"><b>Найдите работу</b>Сопровождение с 1 курса до оффера.</div>
 </div>
-<h3 style="font-family:Georgia,serif;color:var(--navy);margin:6px 0 8px">Новости центра</h3>
+<h3 style="color:var(--navy);margin:6px 0 8px">Новости центра</h3>
 <ul style="margin-left:18px;font-size:14px;color:#3c424a">
 <li style="margin-bottom:6px">Встреча с IT-компанией «Мадригал» на площадке «IT-Кузня» — старт практико-ориентированного сотрудничества.</li>
 <li style="margin-bottom:6px">Студенты ИУБиП — победители конкурса «Умная стипендия» (Банк «Центр-инвест», фонд «Образование и наука ЮФО»).</li>
@@ -574,10 +576,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 </main>
 <footer>
 <div class="foot-grid">
-<div><h5>Центр карьеры</h5><p>Южный университет (ИУБиП)<br>344068, г. Ростов-на-Дону,<br>пр. Михаила Нагибина, 33А/47<br><br>career@iubip.ru<br>8 800 77-55-012</p></div>
-<div><h5>Студентам</h5><p><a href="#" onclick="goTab('vac');return false">Вакансии</a><br><a href="#" onclick="goTab('book');return false">Консультации</a><br><a href="#" onclick="goTab('prog');return false">Карьерный трек</a></p></div>
-<div><h5>Университет</h5><p><a href="https://www.iubip.ru/" target="_blank" rel="noopener noreferrer">Основной сайт</a><br><a href="https://www.iubip.ru/abitur/tselevoe-obuchenie/" target="_blank" rel="noopener noreferrer">Целевое обучение</a><br><a href="#" onclick="goTab('dash');return false">Аналитика выпуска</a><br><a href="#" onclick="goTab('book');return false">День карьеры</a></p></div>
-<div><h5>Работодателям</h5><p><a href="https://hh.ru/employer" target="_blank" rel="noopener noreferrer">Разместить вакансию</a><br><a href="#" onclick="goTab('book');return false">Договор о практике</a><br>пн–пт 9:00–18:00</p></div>
+<div><h3>Центр карьеры</h3><p>Южный университет (ИУБиП)<br>344068, г. Ростов-на-Дону,<br>пр. Михаила Нагибина, 33А/47<br><br><a href="mailto:career@iubip.ru">career@iubip.ru</a><br><a href="tel:+78007755012">8 800 77-55-012</a></p></div>
+<div><h3>Студентам</h3><p><a href="#vac" onclick="goTab('vac');return false">Вакансии</a><br><a href="#book" onclick="goTab('book');return false">Консультации</a><br><a href="#prog" onclick="goTab('prog');return false">Карьерный трек</a></p></div>
+<div><h3>Университет</h3><p><a href="https://www.iubip.ru/" target="_blank" rel="noopener noreferrer">Основной сайт</a><br><a href="https://www.iubip.ru/abitur/tselevoe-obuchenie/" target="_blank" rel="noopener noreferrer">Целевое обучение</a><br><a href="#dash" onclick="goTab('dash');return false">Аналитика выпуска</a><br><a href="#book" onclick="goTab('book');return false">День карьеры</a></p></div>
+<div><h3>Работодателям</h3><p><a href="https://hh.ru/employer" target="_blank" rel="noopener noreferrer">Разместить вакансию</a><br><a href="#book" onclick="goTab('book');return false">Договор о практике</a><br>пн–пт 9:00–18:00</p></div>
 </div>
 <div class="foot-bottom"><span>© 2026 Южный университет (ИУБиП). Все права защищены.</span><span>При использовании материалов ссылка на сайт обязательна.</span></div>
 </footer>
@@ -585,9 +587,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <div class="panel" style="max-width:420px;width:92%;margin:0" id="callBox">
 <h2>Заказать звонок</h2>
 <p class="lead">Оставьте контакты — перезвоним в рабочее время (пн–пт 9:00–18:00).</p>
-<div class="field"><label>Ваше имя</label><input id="callName" type="text" placeholder="Как к вам обращаться"></div>
-<div class="field"><label>Телефон</label><input id="callPhone" type="text" placeholder="+7 (___) ___-__-__"></div>
-<div class="field"><label>Тема</label><select id="callTopic"><option>Консультация по карьере</option><option>Практика и стажировка</option><option>Целевое обучение</option><option>Работодателю</option></select></div>
+<div class="field"><label for="callName">Ваше имя</label><input id="callName" type="text" placeholder="Как к вам обращаться"></div>
+<div class="field"><label for="callPhone">Телефон</label><input id="callPhone" type="text" placeholder="+7 (___) ___-__-__"></div>
+<div class="field"><label for="callTopic">Тема</label><select id="callTopic"><option>Консультация по карьере</option><option>Практика и стажировка</option><option>Целевое обучение</option><option>Работодателю</option></select></div>
 <div class="btn-row"><button class="btn btn-navy" onclick="submitCall()">Жду звонка</button><button class="btn btn-outline" onclick="closeCallModal()">Отмена</button></div>
 <p class="legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
 </div>
@@ -686,7 +688,7 @@ el.innerHTML='<div class="vac-head"><a class="vac-title" href="'+safeUrl(link)+'
 el.querySelector('button').onclick=()=>{showToast('Отклик отправлен: '+v.c+'. Продолжить — на trudvsem.ru');window.open(safeUrl(link),'_blank','noopener')};
 grid.appendChild(el);
 });
-if(!grid.innerHTML)grid.innerHTML='<div class="panel">По запросу ничего не нашлось. Позвоните нам: 8 800 77-55-012 — подберём варианты вручную.</div>';
+if(!grid.innerHTML)grid.innerHTML='<div class="panel">По запросу ничего не нашлось. Позвоните нам: <a href="tel:+78007755012">8 800 77-55-012</a> — подберём варианты вручную.</div>';
 grid.innerHTML+='<div class="panel" id="hhBlock" style="margin-top:4px"><b>Свежие вакансии с hh.ru</b><p class="legal">Подгружаются вживую с hh.ru под вашу академию.</p><button class="btn btn-navy" onclick="loadHH(this)">Загрузить с hh.ru</button></div>';
 }
 /* ===== Стажировки: принцип тот же — сначала академия ===== */
@@ -871,35 +873,35 @@ b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 1.</b> В какой ака
 if(RB.step===2){
 b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 2.</b> Как с вами связаться? <span style="color:#6b7280">Академия: '+(a?a.name:'—')+'</span></p>'
 +'<div class="rb-hint">Совет: телефон — рабочий, с WhatsApp или MAX. Email проверьте дважды: опечатка — и приглашение уйдёт в никуда. Город — где реально готовы работать.</div>'
-+'<div class="field"><label>Фото (необязательно, до 2 МБ)</label><input id="rbPhotoFile" type="file" accept="image/*" onchange="rbPhoto(this)"><div id="rbPhotoPrevWrap" style="margin-top:8px">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo">':'')+'</div></div>'
-+'<div class="field"><label>ФИО</label><input id="rbName" type="text" value="'+esc(RB.name)+'" placeholder="Иванова Анна Сергеевна"></div>'
-+'<div class="field"><label>Телефон</label><input id="rbPhone" type="text" value="'+esc(RB.phone)+'" placeholder="+7 (___) ___-__-__"></div>'
-+'<div class="field"><label>Email</label><input id="rbEmail" type="text" value="'+esc(RB.email)+'" placeholder="anna@example.ru"></div>'
-+'<div class="field"><label>Дата рождения (необязательно)</label><input id="rbBirth" type="text" value="'+esc(RB.birth)+'" placeholder="01.01.2006"></div>'
-+'<div class="field"><label>Город</label><input id="rbCity" type="text" value="'+esc(RB.city)+'"></div>'
-+'<div class="field"><label>Курс</label><select id="rbCourse">'+["1 курс","2 курс","3 курс","4 курс","5 курс","Магистратура, 1 курс","Магистратура, 2 курс","Колледж","Выпускник"].map(c=>'<option'+(RB.course===c?' selected':'')+'>'+c+'</option>').join('')+'</select></div>';
++'<div class="field"><label for="rbPhotoFile">Фото (необязательно, до 2 МБ)</label><input id="rbPhotoFile" type="file" accept="image/*" onchange="rbPhoto(this)"><div id="rbPhotoPrevWrap" style="margin-top:8px">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo">':'')+'</div></div>'
++'<div class="field"><label for="rbName">ФИО</label><input id="rbName" type="text" value="'+esc(RB.name)+'" placeholder="Иванова Анна Сергеевна"></div>'
++'<div class="field"><label for="rbPhone">Телефон</label><input id="rbPhone" type="text" value="'+esc(RB.phone)+'" placeholder="+7 (___) ___-__-__"></div>'
++'<div class="field"><label for="rbEmail">Email</label><input id="rbEmail" type="text" value="'+esc(RB.email)+'" placeholder="anna@example.ru"></div>'
++'<div class="field"><label for="rbBirth">Дата рождения (необязательно)</label><input id="rbBirth" type="text" value="'+esc(RB.birth)+'" placeholder="01.01.2006"></div>'
++'<div class="field"><label for="rbCity">Город</label><input id="rbCity" type="text" value="'+esc(RB.city)+'"></div>'
++'<div class="field"><label for="rbCourse">Курс</label><select id="rbCourse">'+["1 курс","2 курс","3 курс","4 курс","5 курс","Магистратура, 1 курс","Магистратура, 2 курс","Колледж","Выпускник"].map(c=>'<option'+(RB.course===c?' selected':'')+'>'+c+'</option>').join('')+'</select></div>';
 }
 if(RB.step===3){
 const pos=a?a.positions:[];
 b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 3.</b> Кем хотите работать? <span style="color:#6b7280">Подсказки — по вашей академии.</span></p>'
 +'<div class="rb-hint">Совет: студенту — честная junior-должность из списка, а не завышенная. Работодатель ищет по названию: пишите так же, как в вакансии, на которую откликаетесь.</div>'
-+'<div class="field"><label>Желаемая должность</label><select id="rbPosition"><option value="">— выбрать —</option>'+pos.map(p=>'<option'+(RB.position===p?' selected':'')+'>'+p+'</option>').join('')+'</select></div>'
-+'<div class="field"><label>Или своя должность</label><input id="rbCustomPos" type="text" value="'+esc(RB.customPos)+'" placeholder="Например: помощник маркетолога"></div>'
-+'<div class="field"><label>Занятость</label><select id="rbEmployment">'+["Полная занятость","Частичная занятость","Стажировка","Практика","Удалённая работа"].map(c=>'<option'+(RB.employment===c?' selected':'')+'>'+c+'</option>').join('')+'</select></div>'
-+'<div class="field"><label>Желаемая зарплата (необязательно)</label><input id="rbSalary" type="text" value="'+esc(RB.salary)+'" placeholder="Например: от 60 000 ₽"></div>';
++'<div class="field"><label for="rbPosition">Желаемая должность</label><select id="rbPosition"><option value="">— выбрать —</option>'+pos.map(p=>'<option'+(RB.position===p?' selected':'')+'>'+p+'</option>').join('')+'</select></div>'
++'<div class="field"><label for="rbCustomPos">Или своя должность</label><input id="rbCustomPos" type="text" value="'+esc(RB.customPos)+'" placeholder="Например: помощник маркетолога"></div>'
++'<div class="field"><label for="rbEmployment">Занятость</label><select id="rbEmployment">'+["Полная занятость","Частичная занятость","Стажировка","Практика","Удалённая работа"].map(c=>'<option'+(RB.employment===c?' selected':'')+'>'+c+'</option>').join('')+'</select></div>'
++'<div class="field"><label for="rbSalary">Желаемая зарплата (необязательно)</label><input id="rbSalary" type="text" value="'+esc(RB.salary)+'" placeholder="Например: от 60 000 ₽"></div>';
 }
 if(RB.step===4){
 const prg=a?a.programs:[];const sk=a?a.skills:[];
 b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 4.</b> Образование, практика и навыки.</p>'
 +'<div class="rb-hint">Совет: программу пишите с шифром (например, 38.02.01) — так принято в вузе. В практике дайте 1–2 места с фактами: где, сколько, что делали. Навыки отмечайте только те, что подтвердите на собеседовании.</div>'
-+'<div class="field"><label>Программа обучения</label><select id="rbProgram"><option value="">— выбрать —</option>'+prg.map(p=>'<option'+(RB.program===p?' selected':'')+'>'+p+'</option>').join('')+'</select></div>'
-+'<div class="field"><label>Год выпуска</label><select id="rbYear">'+["2026","2027","2028","2029","2030","Уже выпустился"].map(c=>'<option'+(RB.year===c?' selected':'')+'>'+c+'</option>').join('')+'</select></div>'
-+'<div class="field"><label>Практика и опыт (где проходили, что делали)</label><textarea id="rbPractice" placeholder="Например: практика в отеле «Атташе» — служба приёма, 2 месяца">'+esc(RB.practice)+'</textarea></div>'
-+'<div class="field"><label>Навыки (отметьте подходящие)</label><div>'+sk.map(s=>'<label class="rb-check"><input type="checkbox" name="rbSkill" value="'+s+'"'+(RB.skills.indexOf(s)>=0?' checked':'')+'>'+s+'</label>').join('')+'</div></div>'
-+'<div class="field"><label>Свои навыки через запятую</label><input id="rbCustomSkills" type="text" value="'+esc(RB.customSkills)+'" placeholder="Английский B1, водительские права"></div>'
-+'<div class="field"><label>Языки</label><input id="rbLangs" type="text" value="'+esc(RB.langs)+'" placeholder="Русский — родной, английский — B1"></div>'
-+'<div class="field"><label>Курсы и доп. образование</label><textarea id="rbCourses" placeholder="Например: курс по Excel, 2025">'+esc(RB.courses)+'</textarea></div>'
-+'<div class="field"><label>О себе (2–3 предложения)</label><textarea id="rbAbout" placeholder="Ответственный, быстро учусь, готов к сменному графику">'+esc(RB.about)+'</textarea></div>';
++'<div class="field"><label for="rbProgram">Программа обучения</label><select id="rbProgram"><option value="">— выбрать —</option>'+prg.map(p=>'<option'+(RB.program===p?' selected':'')+'>'+p+'</option>').join('')+'</select></div>'
++'<div class="field"><label for="rbYear">Год выпуска</label><select id="rbYear">'+["2026","2027","2028","2029","2030","Уже выпустился"].map(c=>'<option'+(RB.year===c?' selected':'')+'>'+c+'</option>').join('')+'</select></div>'
++'<div class="field"><label for="rbPractice">Практика и опыт (где проходили, что делали)</label><textarea id="rbPractice" placeholder="Например: практика в отеле «Атташе» — служба приёма, 2 месяца">'+esc(RB.practice)+'</textarea></div>'
++'<div class="field"><span class="lbl">Навыки (отметьте подходящие)</span><div>'+sk.map(s=>'<label class="rb-check"><input type="checkbox" name="rbSkill" value="'+s+'"'+(RB.skills.indexOf(s)>=0?' checked':'')+'>'+s+'</label>').join('')+'</div></div>'
++'<div class="field"><label for="rbCustomSkills">Свои навыки через запятую</label><input id="rbCustomSkills" type="text" value="'+esc(RB.customSkills)+'" placeholder="Английский B1, водительские права"></div>'
++'<div class="field"><label for="rbLangs">Языки</label><input id="rbLangs" type="text" value="'+esc(RB.langs)+'" placeholder="Русский — родной, английский — B1"></div>'
++'<div class="field"><label for="rbCourses">Курсы и доп. образование</label><textarea id="rbCourses" placeholder="Например: курс по Excel, 2025">'+esc(RB.courses)+'</textarea></div>'
++'<div class="field"><label for="rbAbout">О себе (2–3 предложения)</label><textarea id="rbAbout" placeholder="Ответственный, быстро учусь, готов к сменному графику">'+esc(RB.about)+'</textarea></div>';
 }
 if(RB.step===5){
 const pos=RB.customPos.trim()||RB.position||'—';
