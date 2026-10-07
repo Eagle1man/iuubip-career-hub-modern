@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0e2f5f">
 <meta name="description" content="Центр карьеры Южного университета (ИУБиП): вакансии и стажировки Ростовской области, конструктор резюме, консультации и карьерный трек для студентов.">
 <meta name="format-detection" content="telephone=no">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e2f5f'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='26' font-weight='900' fill='%23e8cf7a' text-anchor='middle'%3EИУ%3C/text%3E%3C/svg%3E">
 <title>Центр карьеры — Южный университет (ИУБиП)</title>
 <style>
@@ -23,14 +23,20 @@
   --radius:18px;--radius-md:14px;--radius-sm:10px;--pill:999px;
   --shadow:0 1px 2px rgba(16,35,64,.05),0 10px 30px rgba(16,35,64,.07);
   --shadow-lg:0 22px 55px rgba(16,35,64,.16);
-  --maxw:1180px;
+  --maxw:1180px;  --heading:var(--navy);--link:var(--navy-600);--link-hover:var(--navy);--text-2:#4b5158;--text-3:#3d4657;--hint-ink:#6a5518;--ok-bg:#eaf7ee;--ok-line:#bfe4cb;--ok-ink:#14663a;--bnav-bg:rgba(255,255,255,.96);--gold-on:var(--gold);color-scheme:light;
 }
+html[data-theme=dark]{color-scheme:dark;--bg:#0d1424;--card:#141d31;--ink:#e7ecf5;--muted:#9aa8c0;--line:#26324a;--line-2:#1f2a3f;--navy-050:#182641;--navy-100:#24344f;--gold-050:#2b2410;--heading:#eef2f9;--link:#8db4f0;--link-hover:#b9d2f8;--text-2:#c2cbdb;--text-3:#ccd4e2;--hint-ink:#e0c980;--ok-bg:#12301f;--ok-line:#205c39;--ok-ink:#7dde9e;--bnav-bg:rgba(13,20,36,.96);--gold-on:var(--gold-light);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 22px 55px rgba(0,0,0,.65)}
+@media (prefers-color-scheme:dark){html:not([data-theme]){color-scheme:dark;--bg:#0d1424;--card:#141d31;--ink:#e7ecf5;--muted:#9aa8c0;--line:#26324a;--line-2:#1f2a3f;--navy-050:#182641;--navy-100:#24344f;--gold-050:#2b2410;--heading:#eef2f9;--link:#8db4f0;--link-hover:#b9d2f8;--text-2:#c2cbdb;--text-3:#ccd4e2;--hint-ink:#e0c980;--ok-bg:#12301f;--ok-line:#205c39;--ok-ink:#7dde9e;--bnav-bg:rgba(13,20,36,.96);--gold-on:var(--gold-light);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.5);--shadow-lg:0 22px 55px rgba(0,0,0,.65)}}
+html[data-theme=dark] .btn-navy,html[data-theme=dark] .unav button.active,html[data-theme=dark] .pill.on,html[data-theme=dark] .sheet-list button.active,html[data-theme=dark] .rb-steps span.on,html[data-theme=dark] .step b,html[data-theme=dark] #toast{background:#1d4fa4;border-color:#1d4fa4}
+html[data-theme=dark] .btn-navy:hover{background:#2a62bd;border-color:#2a62bd}
+html[data-theme=dark] input{accent-color:#6f9ee8}
+html[data-theme=dark] .rb-opt:has(input:checked){border-color:#3a6fd0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
-a{color:var(--navy-600);text-decoration:none}
-a:hover{color:var(--navy)}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
 img{max-width:100%;display:block}
-h1,h2,h3,h4{line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.01em}
+h1,h2,h3,h4{line-height:1.2;color:var(--heading);font-weight:800;letter-spacing:-.01em}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
 /* Кнопки */
 .btn{font-family:inherit;font-size:14px;font-weight:600;padding:11px 20px;border-radius:var(--radius-sm);border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .12s,background .15s,box-shadow .15s,border-color .15s;min-height:44px}
@@ -39,38 +45,39 @@ h1,h2,h3,h4{line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.0
 .btn-navy:hover{background:var(--navy-700);color:#fff;box-shadow:0 8px 20px rgba(14,47,95,.25)}
 .btn-gold{background:var(--gold);color:#20242c;font-weight:700}
 .btn-gold:hover{background:#b8911f;color:#fff}
-.btn-outline{background:#fff;border-color:var(--line);color:var(--navy)}
+.btn-outline{background:var(--card);border-color:var(--line);color:var(--heading)}
 .btn-outline:hover{background:var(--navy-050);border-color:var(--navy-100)}
 .btn-call{background:var(--red);color:#fff;font-weight:700}
 .btn-call:hover{background:var(--red-dark);color:#fff}
 .btn-block{width:100%}
 /* Верхняя служебная полоса */
-.topbar{background:#fff;border-bottom:1px solid var(--line-2);font-size:12.5px}
+.topbar{background:var(--card);border-bottom:1px solid var(--line-2);font-size:12.5px}
 .topbar-inner{max-width:var(--maxw);margin:0 auto;padding:7px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .topbar a{color:var(--muted)}
-.topbar a:hover{color:var(--navy)}
+.topbar a:hover{color:var(--link-hover)}
 .topbar .right{margin-left:auto;display:flex;gap:14px;align-items:center}
-.lvbtn{background:var(--navy-050);border:1px solid var(--navy-100);border-radius:var(--pill);font-size:12px;padding:5px 14px;cursor:pointer;font-family:inherit;color:var(--navy);font-weight:600}
+.lvbtn{background:var(--navy-050);border:1px solid var(--navy-100);border-radius:var(--pill);font-size:12px;padding:5px 14px;cursor:pointer;font-family:inherit;color:var(--heading);font-weight:600}
 .lvbtn:hover{background:var(--navy-100)}
 /* Шапка */
-.site-head{background:#fff;border-bottom:1px solid var(--line-2)}
+.site-head{background:var(--card);border-bottom:1px solid var(--line-2)}
 .skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;z-index:500;font-size:13px}
 .skip:focus{left:0}
 .head-inner{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px}
 .head-logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
 .head-logo svg{height:48px;width:auto;flex:none}
+.head-logo svg ellipse,.head-logo svg line{stroke:var(--heading)}.head-logo svg text{stroke:var(--card)}
 .head-titles h1{font-size:17px;line-height:1.15}
 .head-titles p{font-size:12.5px;color:var(--muted)}
 .head-phones{margin-left:auto;display:flex;align-items:center;gap:16px}
-.hphone{font-size:15px;font-weight:800;color:var(--navy);white-space:nowrap}
+.hphone{font-size:15px;font-weight:800;color:var(--heading);white-space:nowrap}
 .hphone small{display:block;font-size:11.5px;font-weight:500;color:var(--muted)}
 .hphone a{color:inherit;text-decoration:none}
-.hphone a:hover{color:var(--navy-700);text-decoration:underline}
+.hphone a:hover{color:var(--heading);text-decoration:underline}
 /* Навигация (десктоп): сегментные «пилюли» */
-.unav{background:#fff;border-bottom:1px solid var(--line-2);position:sticky;top:0;z-index:70}
+.unav{background:var(--card);border-bottom:1px solid var(--line-2);position:sticky;top:0;z-index:70}
 .unav-inner{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .unav-inner::-webkit-scrollbar{display:none}
-.unav button{font-family:inherit;font-size:13.5px;font-weight:600;color:var(--navy);background:transparent;border:1px solid transparent;border-radius:var(--pill);padding:9px 18px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.unav button{font-family:inherit;font-size:13.5px;font-weight:600;color:var(--heading);background:transparent;border:1px solid transparent;border-radius:var(--pill);padding:9px 18px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
 .unav button:hover{background:var(--navy-050)}
 .unav button.active{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 6px 16px rgba(14,47,95,.22)}
 /* Нижняя навигация (мобайл) */
@@ -83,8 +90,8 @@ h1,h2,h3,h4{line-height:1.2;color:var(--navy);font-weight:800;letter-spacing:-.0
 .hero h2{color:#fff;font-size:clamp(24px,4.6vw,42px);max-width:820px;margin-bottom:12px}
 .hero h2 em{font-style:normal;color:var(--gold-light)}
 .hero p.sub{font-size:clamp(14px,1.6vw,16.5px);color:rgba(255,255,255,.86);max-width:660px}
-.search-panel{background:#fff;border-radius:var(--radius);padding:16px;margin-top:26px;box-shadow:var(--shadow-lg);display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:820px}
-.search-panel input{flex:1;min-width:200px;font-family:inherit;font-size:16px;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-sm);outline:none;color:var(--ink)}
+.search-panel{background:var(--card);border-radius:var(--radius);padding:16px;margin-top:26px;box-shadow:var(--shadow-lg);display:flex;gap:10px;flex-wrap:wrap;align-items:center;max-width:820px}
+.search-panel input{flex:1;min-width:200px;font-family:inherit;font-size:16px;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-sm);outline:none;background:var(--card);color:var(--ink)}
 .search-panel input:focus{border-color:var(--navy-600);box-shadow:0 0 0 3px rgba(23,69,126,.14)}
 .fast{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px;color:rgba(255,255,255,.72)}
 .fast a,.fast button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:7px 15px;border-radius:var(--pill);font-size:12.5px;font-family:inherit;cursor:pointer}
@@ -103,49 +110,49 @@ main{padding:28px 20px 90px}
 .section-head span{font-size:13.5px;color:var(--muted)}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
 .panel h2{font-size:19px;margin-bottom:10px}
-.lead{font-size:15px;color:#3d4657;margin-bottom:14px}
+.lead{font-size:15px;color:var(--text-3);margin-bottom:14px}
 .legal{font-size:12.5px;color:var(--muted);margin-top:12px}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap}
 /* Формы */
 .field{margin-bottom:14px}
-.field label,.field .lbl{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
-.field input,.field select,.field textarea,#filter{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:#fff;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
+.field label,.field .lbl{display:block;font-size:13px;font-weight:600;color:var(--heading);margin-bottom:6px}
+.field input,.field select,.field textarea,#filter{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--card);color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
 .field textarea{min-height:96px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus,#filter:focus{border-color:var(--navy-600);box-shadow:0 0 0 3px rgba(23,69,126,.14)}
 .times{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.times button{font-family:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--line);background:#fff;border-radius:var(--pill);cursor:pointer;color:var(--navy)}
+.times button{font-family:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--line);background:var(--card);border-radius:var(--pill);cursor:pointer;color:var(--heading)}
 .times button:hover{background:var(--navy-050);border-color:var(--navy-100)}
-.ok{background:#eaf7ee;border:1px solid #bfe4cb;color:#14663a;border-radius:var(--radius-md);padding:14px 16px;font-size:14px}
+.ok{background:var(--ok-bg);border:1px solid var(--ok-line);color:var(--ok-ink);border-radius:var(--radius-md);padding:14px 16px;font-size:14px}
 /* Раскладка «фильтры + список» */
 .work{display:grid;grid-template-columns:268px 1fr;gap:22px;align-items:start}
 .side{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:sticky;top:80px}
 .filter-row{margin-bottom:14px;max-width:320px}
 .side h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 8px;font-weight:700}
 .side h3:first-child{margin-top:0}
-.side label{display:flex;gap:9px;align-items:center;font-size:14px;padding:7px 0;cursor:pointer;color:#3d4657}
-.side label:hover{color:var(--navy)}
+.side label{display:flex;gap:9px;align-items:center;font-size:14px;padding:7px 0;cursor:pointer;color:var(--text-3)}
+.side label:hover{color:var(--heading)}
 .side input{accent-color:var(--navy);width:17px;height:17px;flex:none}
-.note{background:var(--gold-050);border-left:3px solid var(--gold);border-radius:8px;padding:12px 14px;font-size:12.5px;color:#6a5518;margin-top:16px;line-height:1.5}
+.note{background:var(--gold-050);border-left:3px solid var(--gold);border-radius:8px;padding:12px 14px;font-size:12.5px;color:var(--hint-ink);margin-top:16px;line-height:1.5}
 /* Карточка вакансии */
 .vacancy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s,border-color .16s}
 .vacancy:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--navy-100)}
 .vac-head{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-.vac-title{font-size:16.5px;font-weight:800;color:var(--navy);line-height:1.3}
-.vac-title:hover{color:var(--navy-600);text-decoration:underline}
-.vac-salary{font-size:15px;font-weight:800;color:var(--green);white-space:nowrap;background:#eaf7ee;border-radius:var(--pill);padding:5px 13px}
-.vac-sub{font-size:13.5px;color:#4b5158;margin-top:5px}
+.vac-title{font-size:16.5px;font-weight:800;color:var(--heading);line-height:1.3}
+.vac-title:hover{color:var(--link);text-decoration:underline}
+.vac-salary{font-size:15px;font-weight:800;color:var(--ok-ink);white-space:nowrap;background:var(--ok-bg);border-radius:var(--pill);padding:5px 13px}
+.vac-sub{font-size:13.5px;color:var(--text-2);margin-top:5px}
 .vac-meta{font-size:12.5px;color:var(--muted);margin-top:6px}
-.vac-desc{font-size:13.5px;color:#4b5158;margin-top:10px}
+.vac-desc{font-size:13.5px;color:var(--text-2);margin-top:10px}
 .vac-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
-.skill{background:var(--navy-050);color:var(--navy-600);font-size:12px;font-weight:600;border-radius:var(--pill);padding:4px 12px}
-.ibadge{background:#eaf7ee;color:#14663a;font-size:12px;font-weight:700;border-radius:var(--pill);padding:4px 12px}
+.skill{background:var(--navy-050);color:var(--link);font-size:12px;font-weight:600;border-radius:var(--pill);padding:4px 12px}
+.ibadge{background:var(--ok-bg);color:var(--ok-ink);font-size:12px;font-weight:700;border-radius:var(--pill);padding:4px 12px}
 .vac-bottom{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line-2)}
 .vac-src{font-size:12px;color:var(--muted)}
 .vac-actions{display:flex;gap:8px;flex-wrap:wrap}
 .backlink{margin-bottom:14px}
-.acad-title{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--navy)}
-.acad-sub{font-size:13.5px;color:#4b5158;margin:8px 0 16px;line-height:1.6}
+.acad-title{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--heading)}
+.acad-sub{font-size:13.5px;color:var(--text-2);margin:8px 0 16px;line-height:1.6}
 /* Академии */
 .acad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .acad-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px;cursor:pointer;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s,border-color .16s;position:relative;overflow:hidden}
@@ -153,11 +160,11 @@ main{padding:28px 20px 90px}
 .acad-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--navy-100)}
 .acad-card h3{font-size:15.5px;margin-bottom:6px}
 .acad-card p{font-size:13px;color:var(--muted)}
-.acad-card .cnt{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--navy-600);background:var(--navy-050);border-radius:var(--pill);padding:4px 12px}
-.acad-card .go{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--gold)}
+.acad-card .cnt{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:var(--link);background:var(--navy-050);border-radius:var(--pill);padding:4px 12px}
+.acad-card .go{display:block;margin-top:10px;font-size:13px;font-weight:700;color:var(--gold-on)}
 /* Пилюли-фильтры */
 .pills{display:flex;gap:8px;flex-wrap:wrap}
-.pill{font-family:inherit;font-size:13.5px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:var(--pill);padding:9px 18px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;min-height:40px}
+.pill{font-family:inherit;font-size:13.5px;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--heading);border-radius:var(--pill);padding:9px 18px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;min-height:40px}
 .pill:hover{background:var(--navy-050);border-color:var(--navy-100)}
 .pill.on{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 6px 16px rgba(14,47,95,.2)}
 /* Конструктор резюме */
@@ -168,11 +175,11 @@ main{padding:28px 20px 90px}
 .rb-opt:hover{border-color:var(--navy-100);background:var(--navy-050)}
 .rb-opt input{margin-right:8px;accent-color:var(--navy)}
 .rb-opt:has(input:checked){border-color:var(--navy);background:var(--navy-050)}
-.rb-hint{background:var(--gold-050);border-left:3px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:12.5px;color:#6a5518;margin-bottom:14px;line-height:1.55}
+.rb-hint{background:var(--gold-050);border-left:3px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:12.5px;color:var(--hint-ink);margin-bottom:14px;line-height:1.55}
 .rb-nav{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
-.rb-preview{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;font-size:13.5px;line-height:1.65}
+.rb-preview{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;font-size:13.5px;line-height:1.65}
 .rb-preview h3{font-size:18px;margin-bottom:4px}
-.rb-preview .pos{margin:10px 0;color:var(--navy-600);font-weight:700}
+.rb-preview .pos{margin:10px 0;color:var(--link);font-weight:700}
 .rb-preview .sec{margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)}
 .rb-photo{width:96px;height:96px;object-fit:cover;border-radius:var(--radius-sm);border:1px solid var(--line)}
 /* Амбассадоры и кураторы */
@@ -183,27 +190,27 @@ main{padding:28px 20px 90px}
 .amb-logo{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;flex:none}
 .amb-head h3{font-size:16px}
 .amb-fit{font-size:12.5px;color:var(--muted)}
-.amb-card ul{list-style:none;display:grid;gap:9px;font-size:13.5px;color:#3d4657}
+.amb-card ul{list-style:none;display:grid;gap:9px;font-size:13.5px;color:var(--text-3)}
 .amb-card ul li{padding-left:16px;position:relative}
 .amb-card ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
 .amb-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 /* Карьерный трек */
-.slogan{font-size:clamp(17px,2.4vw,22px);font-weight:800;color:var(--navy);line-height:1.35;margin-bottom:8px}
+.slogan{font-size:clamp(17px,2.4vw,22px);font-weight:800;color:var(--heading);line-height:1.35;margin-bottom:8px}
 .slogan-sub{font-size:13.5px;color:var(--muted);margin-bottom:18px}
 .ctrack{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.cnode{background:linear-gradient(180deg,#fff,var(--navy-050));border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
-.cnode .lvl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold)}
+.cnode{background:linear-gradient(180deg,var(--card),var(--navy-050));border:1px solid var(--line);border-radius:var(--radius-md);padding:18px}
+.cnode .lvl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-on)}
 .cnode h3{font-size:16px;margin:8px 0}
-.cnode .sal{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.cnode .sal{font-size:17px;font-weight:800;color:var(--heading);margin-bottom:8px}
 .cnode .sal small{font-size:11.5px;font-weight:600;color:var(--muted)}
-.cnode p{font-size:13px;color:#4b5158}
+.cnode p{font-size:13px;color:var(--text-2)}
 /* KPI */
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:16px}
 .kpi{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-600) 100%);color:#fff;border-radius:var(--radius);padding:22px}
 .kpi b{display:block;font-size:clamp(26px,3.6vw,34px);font-weight:800;color:var(--gold-light);line-height:1.1;margin-bottom:6px}
 .kpi span{font-size:13px;color:rgba(255,255,255,.84)}
 .brow{margin-bottom:14px}
-.brow .btop{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px;color:#3d4657}
+.brow .btop{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px;color:var(--text-3)}
 .btrack{height:9px;background:var(--line-2);border-radius:var(--pill);overflow:hidden}
 .bfill{height:100%;background:linear-gradient(90deg,var(--navy),var(--gold));border-radius:var(--pill)}
 /* Прогресс-трек студента */
@@ -215,7 +222,7 @@ main{padding:28px 20px 90px}
 .tstep{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--radius-sm);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow)}
 .tstep .dot{width:34px;height:34px;border-radius:50%;background:var(--line-2);color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:800;flex:none}
 .tstep h4{font-size:15px;margin-bottom:4px}
-.tstep p{font-size:13px;color:#4b5158}
+.tstep p{font-size:13px;color:var(--text-2)}
 .tstep .date{font-size:12px;color:var(--muted);margin-top:6px}
 .tstep.done{border-left-color:var(--green)}
 .tstep.done .dot{background:var(--green);color:#fff}
@@ -228,7 +235,7 @@ main{padding:28px 20px 90px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:18px;box-shadow:var(--shadow)}
 .step b{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;align-items:center;justify-content:center;font-size:13px;margin-bottom:10px}
 .step h4{font-size:15px;margin-bottom:6px}
-.step p{font-size:13px;color:#4b5158}
+.step p{font-size:13px;color:var(--text-2)}
 /* Подвал */
 footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;margin-top:20px}
 .foot-grid{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
@@ -286,17 +293,17 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
   .btn-row{flex-direction:column}
   .btn-row .btn{width:100%}
   /* Нижняя навигация «как в приложении» */
-  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:150;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:150;background:var(--bnav-bg);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
   .bnav button{background:none;border:0;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:var(--muted);padding:8px 2px;border-radius:12px;cursor:pointer;min-height:52px;justify-content:center;transition:color .15s,background .15s}
   .bnav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-  .bnav button.active{color:var(--navy);background:var(--navy-050)}
+  .bnav button.active{color:var(--heading);background:var(--navy-050)}
   /* Шторка «Ещё» и фильтры */
-  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:160;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -18px 50px rgba(16,35,64,.24);padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .26s ease;max-height:82vh;overflow:auto}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:160;background:var(--card);border-radius:22px 22px 0 0;box-shadow:0 -18px 50px rgba(16,35,64,.24);padding:18px 18px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .26s ease;max-height:82vh;overflow:auto}
   .sheet.open{transform:translateY(0)}
   .sheet-grip{width:44px;height:5px;border-radius:var(--pill);background:var(--line);margin:0 auto 14px}
   .sheet h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
   .sheet-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-  .sheet-list button{font-family:inherit;font-size:14px;font-weight:600;text-align:left;padding:13px 14px;border:1px solid var(--line);background:#fff;border-radius:var(--radius-sm);cursor:pointer;color:var(--navy);min-height:48px}
+  .sheet-list button{font-family:inherit;font-size:14px;font-weight:600;text-align:left;padding:13px 14px;border:1px solid var(--line);background:var(--card);border-radius:var(--radius-sm);cursor:pointer;color:var(--heading);min-height:48px}
   .sheet-list button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
   .sheet-close{width:100%;margin-top:12px}
   #scrim{position:fixed;inset:0;background:rgba(9,20,38,.45);z-index:155;opacity:0;pointer-events:none;transition:opacity .22s}
@@ -324,7 +331,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <a href="https://www.iubip.ru/" target="_blank" rel="noopener noreferrer">Сведения об образовательной организации</a>
 <a href="https://minobrnauki.gov.ru" target="_blank" rel="noopener noreferrer">Минобрнауки</a>
 <a href="https://edu.gov.ru" target="_blank" rel="noopener noreferrer">Минпросвещения России</a>
-<span class="right"><button class="lvbtn" onclick="lvToggle()">Версия для слабовидящих</button></span>
+<span class="right"><button class="lvbtn theme-btn" data-theme-btn aria-pressed="false" onclick="themeToggle()">🌙 Тёмная тема</button><button class="lvbtn" onclick="lvToggle()">Версия для слабовидящих</button></span>
 </div></div>
 <header class="site-head"><div class="head-inner">
 <a class="head-logo" href="#vac" onclick="goTab('vac');return false" aria-label="Центр карьеры Южного университета">
@@ -389,7 +396,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <button data-tab="about">О центре</button>
 <button data-tab="contacts">Контакты</button>
 </div>
-<button class="btn btn-outline sheet-close" onclick="closeSheets()">Закрыть</button>
+<button class="btn btn-outline sheet-close theme-btn" data-theme-btn aria-pressed="false" onclick="themeToggle()">🌙 Тёмная тема</button><button class="btn btn-outline sheet-close" onclick="closeSheets()">Закрыть</button>
 </div>
 <main class="container">
 <section id="vac" class="page active">
@@ -422,7 +429,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <option value="all">Все направления</option><option>Юриспруденция</option><option>Психология</option><option>HR</option><option>Менеджмент</option><option>Экономика</option><option>Бухучёт</option><option>IT</option><option>Логистика</option><option>Туризм</option><option>Медицина</option>
 </select></div>
 <div id="acadView">
-<p style="font-size:14px;color:#4b5158;margin-bottom:14px">Выберите академию — покажем вакансии и места практики по вашим специальностям.</p>
+<p style="font-size:14px;color:var(--text-2);margin-bottom:14px">Выберите академию — покажем вакансии и места практики по вашим специальностям.</p>
 <div class="acad-grid" id="acadGrid"></div>
 </div>
 <div id="vacView" style="display:none">
@@ -557,8 +564,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.78);padding:36px 0 24px;ma
 <div class="step"><b>Постройте трек</b>Конструктор резюме, консультации, встречи с работодателями.</div>
 <div class="step"><b>Найдите работу</b>Сопровождение с 1 курса до оффера.</div>
 </div>
-<h3 style="color:var(--navy);margin:6px 0 8px">Новости центра</h3>
-<ul style="margin-left:18px;font-size:14px;color:#3c424a">
+<h3 style="color:var(--heading);margin:6px 0 8px">Новости центра</h3>
+<ul style="margin-left:18px;font-size:14px;color:var(--text-3)">
 <li style="margin-bottom:6px">Встреча с IT-компанией «Мадригал» на площадке «IT-Кузня» — старт практико-ориентированного сотрудничества.</li>
 <li style="margin-bottom:6px">Студенты ИУБиП — победители конкурса «Умная стипендия» (Банк «Центр-инвест», фонд «Образование и наука ЮФО»).</li>
 <li style="margin-bottom:6px">Азовская кондитерская фабрика провела занятие по организации складского хранения для будущих логистов.</li>
@@ -608,34 +615,34 @@ function extLink(v){return v.u||("https://hh.ru/search/vacancy?text="+encodeURIC
 function hhSearch(v){return "https://hh.ru/search/vacancy?text="+encodeURIComponent(v.t)+"&area=76"}
 const DESC="Официальное трудоустройство. Требования, обязанности и условия — в карточке вакансии на портале «Работа России».";
 // VAC-DATA-START
-const DATA_DATE='25 сентября 2026';const DATA_SHORT='25.09.2026';
+const DATA_DATE='8 октября 2026';const DATA_SHORT='08.10.2026';
 const vacs=[
 {t:"Врач - стоматолог-терапевт",c:"ИП Алиев Руслан Чингизович",city:"Ростовская область",date:"10.09.2026",s:"от 80 000 ₽",tags:["стоматология"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/5147746474134/d2238bf4-ad06-11f1-aa0c-1d6b1482639f",pin:1},
 {t:"Врач-стоматолог-хирург",c:"ООО СФ «КАРАТ»",city:"г. Волгодонск",date:"10.09.2026",s:"100 000–120 000 ₽",tags:["стоматология","хирургия"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026101940182/9c4c9784-acfb-11f1-9412-7baeeb0ab72c",pin:1},
 {t:"Врач-стоматолог-терапевт",c:"ООО «Хозрасчетная стоматологическая поликлиника»",city:"г. Таганрог",date:"09.06.2026",s:"50 000–100 000 ₽",tags:["стоматология","терапия"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1246100019076/bcf32168-63ef-11f1-a56c-7ba158124b51",pin:1},
 {t:"Юрист",c:"ИП Алиев Руслан Чингизович",city:"Ростовская область",date:"22.09.2026",s:"90 000–100 000 ₽",tags:["юриспруденция"],dir:"Юриспруденция",acad:"law",u:"https://trudvsem.ru/vacancy/card/5147746474134/567e1854-b696-11f1-a9f1-81af42855215"},
-{t:"Главный юрист",c:"МКУ \"ГХУ\"",city:"Ростовская область",date:"18.09.2026",s:"от 55 000 ₽",tags:["юриспруденция"],dir:"Юриспруденция",acad:"law",u:"https://trudvsem.ru/vacancy/card/1026103292126/60cee8b8-b359-11f1-ab8c-951de311dd61"},
+{t:"Юрист",c:"ООО \"ЗАРЯ\"",city:"Ростовская область",date:"21.09.2026",s:"70 000–80 000 ₽",tags:["юриспруденция"],dir:"Юриспруденция",acad:"law",u:"https://trudvsem.ru/vacancy/card/1146186002027/9c8f3028-b58a-11f1-b9fd-bbcf99b669df"},
 {t:"Старший юрист",c:"ООО \"АВАНГАРД\"",city:"Ростовская область",date:"12.09.2026",s:"52 019–104 037 ₽",tags:["юриспруденция"],dir:"Юриспруденция",acad:"law",u:"https://trudvsem.ru/vacancy/card/1216100026163/97b41d18-ae7b-11f1-9b06-338bb3104f83"},
 {t:"Педагог-психолог",c:"МБОУ СОШ №43 Г.ШАХТЫ",city:"Ростовская область",date:"17.09.2026",s:"от 27 093 ₽",tags:["психология"],dir:"Психология",acad:"hum",u:"https://trudvsem.ru/vacancy/card/1026102779504/ad95b3a8-b290-11f1-8ba9-0db939d1b69f"},
-{t:"Педагог-психолог",c:"МБОУ СОШ №13  Г. АЗОВА",city:"Ростовская область",date:"24.09.2026",s:"от 27 093 ₽",tags:["психология", "образование"],dir:"Психология",acad:"hum",u:"https://trudvsem.ru/vacancy/card/1026101792562/00866108-b7e0-11f1-adb0-c78f30a32c76"},
-{t:"Специалист по кадрам",c:"ГБУСОН РО \"РЦ КАМЕНСКОГО РАЙОНА\"",city:"Ростовская область",date:"23.09.2026",s:"27 093–35 000 ₽",tags:["кадры"],dir:"HR",acad:"hum",u:"https://trudvsem.ru/vacancy/card/1056114006783/0ab39750-b729-11f1-85fc-83a545b8b137"},
-{t:"Менеджер по продажам",c:"ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"ПЕРВЫЙ ЭКО ПРОЕКТ\"",city:"Ростовская область",date:"22.09.2026",s:"60 000–120 000 ₽",tags:["продажи"],dir:"Менеджмент",acad:"itd",u:"https://trudvsem.ru/vacancy/card/5147746474134/a9cc8c74-b65b-11f1-a9f1-81af42855215"},
-{t:"Инженер-программист",c:"МКБ\"ДОН-ТЕКСБАНК\" ООО",city:"Ростовская область",date:"23.09.2026",s:"от 32 000 ₽",tags:["программирование"],dir:"IT",acad:"itd",u:"https://trudvsem.ru/vacancy/card/1026100002708/29b15838-b724-11f1-85fc-83a545b8b137"},
-{t:"Системный администратор",c:"АО \"КОННЫЙ ЗАВОД ИМЕНИ ПЕРВОЙ КОННОЙ АРМИИ\"",city:"Ростовская область",date:"18.09.2026",s:"от 50 000 ₽",tags:["сети"],dir:"IT",acad:"itd",u:"https://trudvsem.ru/vacancy/card/1066111001571/035a9208-b332-11f1-a132-dd29633cf2e9"},
-{t:"Водитель-экспедитор",c:"ООО \"АТП-61\"",city:"Ростовская область",date:"25.06.2026",s:"50 000–90 000 ₽",tags:["логистика"],dir:"Логистика",acad:"itd",u:"https://trudvsem.ru/vacancy/card/1256100022947/02253bb1-705d-11f1-bd43-0d138a37ec09"},
-{t:"Экономист",c:"ГКОУ РО ДОНЕЦКАЯ ШКОЛА-ИНТЕРНАТ",city:"Ростовская область",date:"04.09.2026",s:"27 500–35 000 ₽",tags:["экономика"],dir:"Экономика",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1026102062975/c04f9e38-a81c-11f1-8a32-2b6903e6a9c2"},
+{t:"Педагог-психолог",c:"МБДОУ № 3 \"СОЛНЫШКО\"",city:"Ростовская область",date:"06.10.2026",s:"от 27 093 ₽",tags:["психология", "образование"],dir:"Психология",acad:"hum",u:"https://trudvsem.ru/vacancy/card/1026101122794/a1242ef9-c17a-11f1-a6ab-f7c7dbb1567d"},
+{t:"Специалист по кадрам",c:"МБУ ДО ДШИ",city:"Ростовская область",date:"29.09.2026",s:"27 093–35 000 ₽",tags:["кадры"],dir:"HR",acad:"hum",u:"https://trudvsem.ru/vacancy/card/1026101231507/19eb8368-bbd1-11f1-9a11-2f8460579df4"},
+{t:"Менеджер по продажам",c:"ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ \"ПЕРВЫЙ ЭКО ПРОЕКТ\"",city:"Ростовская область",date:"22.09.2026",s:"50 000–120 000 ₽",tags:["продажи"],dir:"Менеджмент",acad:"itd",u:"https://trudvsem.ru/vacancy/card/5147746474134/a9cc8c74-b65b-11f1-a9f1-81af42855215"},
+{t:"Инженер-программист",c:"ФГБУ РОСНИИВХ",city:"Ростовская область",date:"01.10.2026",s:"40 000–60 000 ₽",tags:["программирование"],dir:"IT",acad:"itd",u:"https://trudvsem.ru/vacancy/card/1156658087739/a96b544a-bd9b-11f1-9dff-97d306130813"},
+{t:"Системный администратор",c:"ГКОУ РО ДОНЕЦКАЯ ШКОЛА-ИНТЕРНАТ",city:"Ростовская область",date:"04.09.2026",s:"от 27 500 ₽",tags:["сети"],dir:"IT",acad:"itd",u:"https://trudvsem.ru/vacancy/card/1026102062975/3571d808-a81c-11f1-8a32-2b6903e6a9c2"},
+{t:"логист",c:"ООО \"ТРАКПАРТ\"",city:"Ростовская область",date:"30.09.2026",s:"от 60 000 ₽",tags:["логистика"],dir:"Логистика",acad:"itd",u:"https://trudvsem.ru/vacancy/card/1236100017394/1a27b878-bcd6-11f1-9dff-97d306130813"},
+{t:"Экономист",c:"ПАО \"ТНС ЭНЕРГО РОСТОВ-НА-ДОНУ\"",city:"Ростовская область",date:"07.10.2026",s:"от 50 000 ₽",tags:["экономика"],dir:"Экономика",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1056164000023/93c99a76-c219-11f1-aa68-7523fb122f6d"},
 {t:"Главный экономист",c:"АО \"ШЗГ\"",city:"Ростовская область",date:"03.09.2026",s:"69 800–100 000 ₽",tags:["экономика"],dir:"Экономика",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1026102769417/fee828df-a761-11f1-b4b9-312b1e80675a"},
 {t:"Главный бизнес-аналитик",c:"ООО \"АВАНГАРД\"",city:"Ростовская область",date:"19.09.2026",s:"52 019–104 037 ₽",tags:["аналитика"],dir:"Экономика",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1216100026163/1f679538-b3e9-11f1-9e3c-99a7bec525ed"},
 {t:"Бизнес-аналитик",c:"ООО \"АВАНГАРД\"",city:"Ростовская область",date:"28.08.2026",s:"41 723–83 446 ₽",tags:["аналитика"],dir:"Экономика",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1216100026163/cfaad350-a30c-11f1-8f65-7f3d797fed49"},
 {t:"Маркетолог-аналитик",c:"ООО \" МИЛЕНД \"",city:"Ростовская область",date:"08.08.2026",s:"70 000–80 000 ₽",tags:["аналитика"],dir:"Экономика",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1146181002758/bd845c4c-92ff-11f1-b277-2737f6f4cf0b"},
-{t:"Бухгалтер",c:"ФИЛИАЛ \"РОСТОВСКИЙ\"",city:"Ростовская область",date:"23.09.2026",s:"от 60 000 ₽",tags:["бухучёт"],dir:"Бухучёт",acad:"ect",u:"https://trudvsem.ru/vacancy/card/78fd7760-0dee-11f0-a4be-03e6ffa13304/4d4a5a24-b749-11f1-b291-e7968767fb9b"},
-{t:"Бухгалтер",c:"ООО \"СИА ТРЕЙД\"",city:"Ростовская область",date:"22.09.2026",s:"33 983–70 000 ₽",tags:["бухучёт"],dir:"Бухучёт",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1156196053089/e48de03a-b678-11f1-85fc-83a545b8b137"},
+{t:"Бухгалтер",c:"МБОУ Г.ШАХТЫ \"ГИМНАЗИЯ №10\"",city:"Ростовская область",date:"17.09.2026",s:"27 093–35 000 ₽",tags:["бухучёт"],dir:"Бухучёт",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1026102778723/fff07c2d-b259-11f1-98bc-350b59df29cf"},
+{t:"Бухгалтер",c:"ООО \"РОСТОВСКИЙ БРОЙЛЕР\"",city:"Ростовская область",date:"20.07.2026",s:"от 65 000 ₽",tags:["бухучёт"],dir:"Бухучёт",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1216100020696/7af67618-8418-11f1-8bd7-5f354e027c4d"},
 {t:"Администратор гостиницы (дома отдыха)",c:"Индивидуальный предприниматель Катеринич Оксана Анатольевна",city:"Ростовская область",date:"16.01.2026",s:"от 27 093 ₽",tags:["гостиницы"],dir:"Туризм",acad:"ect",u:"https://trudvsem.ru/vacancy/card/319619600013253/12bfb2f8-f2b9-11f0-8628-a3cca5294b78"},
 {t:"Экскурсовод",c:"МУК \"КРАЕВЕДЧЕСКИЙ МУЗЕЙ\"",city:"Ростовская область",date:"03.09.2026",s:"27 093–53 000 ₽",tags:["экскурсии"],dir:"Туризм",acad:"ect",u:"https://trudvsem.ru/vacancy/card/1156182001964/96b049aa-a794-11f1-8d85-6f9b8d7d49f7"},
+{t:"Младшая медицинская сестра по уходу за больными",c:"ГБУ РО \"ЦГБ\" В Г. КАМЕНСК-ШАХТИНСКОМ",city:"Ростовская область",date:"02.10.2026",s:"27 093–30 000 ₽",tags:["сестринское дело"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026102106777/4ebd6d58-be34-11f1-9dff-97d306130813"},
 {t:"медицинская сестра",c:"МБУ ЦСО ОРЛОВСКОГО РАЙОНА РОСТОВСКОЙ ОБЛАСТИ",city:"Ростовская область",date:"04.09.2026",s:"от 27 093 ₽",tags:["сестринское дело"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026101453696/8dd6daf8-a834-11f1-8d85-6f9b8d7d49f7"},
-{t:"Младшая медицинская сестра по уходу за больными",c:"ГКУЗ РО \"ДРС № 4\" Г. РОСТОВ-НА-ДОНУ",city:"Ростовская область",date:"25.08.2026",s:"27 093–40 000 ₽",tags:["сестринское дело"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/614efe20-f978-11ea-ae1d-e37b4be0b9ed/556eaa58-a080-11f1-ae19-97b17645c340"},
+{t:"врач-стоматолог",c:"\"СТОМАТОЛОГИЧЕСКАЯ ПОЛИКЛИНИКА\" ФЕДЕРАЛЬНОГО ГОСУДАРСТВЕННОГО БЮДЖЕТНОГО УЧРЕЖДЕНИЯ ЗДРАВООХРАНЕНИЯ \"ЮЖНЫЙ ОКРУЖНОЙ МЕДИЦИНСКИЙ ЦЕНТР ФЕДЕРАЛЬНОГО МЕДИКО-БИОЛОГИЧЕСКОГО АГЕНТСТВА\"",city:"Ростовская область",date:"01.10.2026",s:"75 000–150 000 ₽",tags:["стоматология"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/876978a0-7f6a-11ec-82da-4febb26dc4ec/b2c371f6-bd81-11f1-aa68-7523fb122f6d"},
 {t:"врач-стоматолог-ортопед",c:"ГБУ РО \"СП № 2\" В Г. НОВОЧЕРКАССКЕ",city:"г. Новочеркасск",date:"09.09.2026",s:"30 000–70 000 ₽",tags:["стоматология"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026102227755/f8be8c78-ac29-11f1-8587-2b3d872122a6"},
-{t:"Врач-стоматолог-хирург",c:"ГБУ РО \"СП № 4\" В Г. РОСТОВЕ-НА-ДОНУ",city:"Ростовская область",date:"07.09.2026",s:"50 000–80 000 ₽",tags:["стоматология"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026104368190/5b30b73c-aa9e-11f1-8587-2b3d872122a6"},
 {t:"Фармацевт",c:"ООО  \"БУДЬ ЗДОРОВ!\"",city:"г. Новочеркасск",date:"18.09.2026",s:"40 000–60 000 ₽",tags:["фармация"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026103276000/4bad35fa-b359-11f1-a132-dd29633cf2e9"},
 {t:"Фармацевт",c:"ГБУ РО \"ГП\" В Г. НОВОЧЕРКАССКЕ",city:"Ростовская область",date:"28.08.2026",s:"40 000–55 000 ₽",tags:["фармация"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/b93b46e0-e3a9-11eb-b4d0-a75f74b7b031/2ee2ee00-a2cf-11f1-b956-512fe6f6cdc2"},
 {t:"фельдшер СМП",c:"ГБУ РО \"ЦРБ\" В АЗОВСКОМ РАЙОНЕ",city:"Ростовская область",date:"10.08.2026",s:"45 000–60 000 ₽",tags:["фельдшер"],dir:"Медицина",acad:"medic",u:"https://trudvsem.ru/vacancy/card/1026100511799/3ddd7b88-94b6-11f1-b277-2737f6f4cf0b"},
@@ -826,6 +833,10 @@ function goTab(id){document.querySelectorAll('.unav button,.bnav button,.sheet-l
 document.querySelectorAll('.unav button').forEach(b=>{b.onclick=()=>goTab(b.dataset.tab)});
 function uSearch(){document.getElementById('search').value=document.getElementById('usearch').value;goTab('vac');openAcad('all')}
 function lvToggle(){const on=document.body.style.zoom!=='130%';document.body.style.zoom=on?'130%':'';showToast(on?'Версия для слабовидящих: крупный шрифт включён':'Обычная версия сайта')}
+function themeApply(t){var d=t==='dark';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;document.querySelectorAll('[data-theme-btn]').forEach(function(b){b.textContent=d?'☀️ Светлая тема':'🌙 Тёмная тема';b.setAttribute('aria-pressed',d?'true':'false')});var m=document.querySelector('meta[name=theme-color]');if(m)m.content=d?'#0d1424':'#0e2f5f'}
+function themeToggle(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';try{localStorage.setItem('ccTheme',t)}catch(e){}themeApply(t);showToast(t==='dark'?'Тёмная тема включена':'Светлая тема включена')}
+function themeInit(){var t=null;try{t=localStorage.getItem('ccTheme')}catch(e){}if(t!=='light'&&t!=='dark'){var d=false;try{d=!!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)}catch(e){}t=d?'dark':'light'}themeApply(t)}
+themeInit();
 let toastTimer;
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3000)}
 const ds=document.getElementById('dateSel');
@@ -868,10 +879,10 @@ document.getElementById('rbNext').textContent=RB.step===5?'Готово':'Дал
 if(RB.step===1){
 b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 1.</b> В какой академии вы учитесь? Под неё подберём должности, программы и навыки.</p>'
 +'<div class="rb-hint">Совет: выбирайте академию, где учитесь сейчас. Ошибка здесь — и дальше будут чужие подсказки: не те должности и программы.</div>'
-+ACADS.map(x=>'<label class="rb-opt"><input type="radio" name="rbAcad" value="'+x.id+'"'+(RB.acad===x.id?' checked':'')+'><b>'+x.name+'</b><br><span style="color:#6b7280;font-size:13px">'+x.spec+'</span></label>').join('');
++ACADS.map(x=>'<label class="rb-opt"><input type="radio" name="rbAcad" value="'+x.id+'"'+(RB.acad===x.id?' checked':'')+'><b>'+x.name+'</b><br><span style="color:var(--muted);font-size:13px">'+x.spec+'</span></label>').join('');
 }
 if(RB.step===2){
-b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 2.</b> Как с вами связаться? <span style="color:#6b7280">Академия: '+(a?a.name:'—')+'</span></p>'
+b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 2.</b> Как с вами связаться? <span style="color:var(--muted)">Академия: '+(a?a.name:'—')+'</span></p>'
 +'<div class="rb-hint">Совет: телефон — рабочий, с WhatsApp или MAX. Email проверьте дважды: опечатка — и приглашение уйдёт в никуда. Город — где реально готовы работать.</div>'
 +'<div class="field"><label for="rbPhotoFile">Фото (необязательно, до 2 МБ)</label><input id="rbPhotoFile" type="file" accept="image/*" onchange="rbPhoto(this)"><div id="rbPhotoPrevWrap" style="margin-top:8px">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo">':'')+'</div></div>'
 +'<div class="field"><label for="rbName">ФИО</label><input id="rbName" type="text" value="'+esc(RB.name)+'" placeholder="Иванова Анна Сергеевна"></div>'
@@ -883,7 +894,7 @@ b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 2.</b> Как с вами �
 }
 if(RB.step===3){
 const pos=a?a.positions:[];
-b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 3.</b> Кем хотите работать? <span style="color:#6b7280">Подсказки — по вашей академии.</span></p>'
+b.innerHTML='<p style="margin-bottom:10px"><b>Шаг 3.</b> Кем хотите работать? <span style="color:var(--muted)">Подсказки — по вашей академии.</span></p>'
 +'<div class="rb-hint">Совет: студенту — честная junior-должность из списка, а не завышенная. Работодатель ищет по названию: пишите так же, как в вакансии, на которую откликаетесь.</div>'
 +'<div class="field"><label for="rbPosition">Желаемая должность</label><select id="rbPosition"><option value="">— выбрать —</option>'+pos.map(p=>'<option'+(RB.position===p?' selected':'')+'>'+p+'</option>').join('')+'</select></div>'
 +'<div class="field"><label for="rbCustomPos">Или своя должность</label><input id="rbCustomPos" type="text" value="'+esc(RB.customPos)+'" placeholder="Например: помощник маркетолога"></div>'
@@ -908,7 +919,7 @@ const pos=RB.customPos.trim()||RB.position||'—';
 const skills=RB.skills.concat(RB.customSkills.split(',').map(s=>s.trim()).filter(Boolean));
 b.innerHTML='<p style="margin-bottom:12px"><b>Шаг 5.</b> Резюме собрано. Скачайте в Word или скопируйте текст.</p>'
 +'<div class="rb-hint">Перед скачиванием проверьте: имя и телефон без опечаток, должность совпадает с вакансией, нет пустых разделов. Такой файл можно сразу прикладывать к отклику.</div>'
-+'<div class="rb-preview">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo" style="float:right;margin:0 0 10px 14px">':'')+'<h3>'+esc(RB.name||'Ваше имя')+'</h3><div style="color:#6b7280;font-size:13px">'+esc(a?a.name:'')+'</div>'
++'<div class="rb-preview">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo" style="float:right;margin:0 0 10px 14px">':'')+'<h3>'+esc(RB.name||'Ваше имя')+'</h3><div style="color:var(--muted);font-size:13px">'+esc(a?a.name:'')+'</div>'
 +'<div class="pos">Желаемая должность: '+esc(pos)+' · '+esc(RB.employment)+(RB.salary.trim()?'; '+esc(RB.salary):'')+'</div>'
 +'<div class="sec"><b>Контакты</b>'+esc(RB.phone)+(RB.email?', '+esc(RB.email):'')+' · '+esc(RB.city)+(RB.birth.trim()?'; род. '+esc(RB.birth):'')+'</div>'
 +'<div class="sec"><b>Образование</b>'+esc(RB.program||'—')+', '+esc(RB.course)+', выпуск '+esc(RB.year)+'</div>'

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Центр карьеры Южного университета (ИУБиП) — современный редизайн, mobile-first",
   "scripts": {
-    "test": "node --test tests/static.test.mjs tests/dom.test.mjs tests/flows.test.mjs tests/security.test.mjs tests/a11y.test.mjs",
+    "test": "node --test tests/static.test.mjs tests/dom.test.mjs tests/flows.test.mjs tests/security.test.mjs tests/a11y.test.mjs tests/theme.test.mjs",
     "test:static": "node --test tests/static.test.mjs",
     "test:dom": "node --test tests/dom.test.mjs",
     "test:security": "node --test tests/security.test.mjs",
