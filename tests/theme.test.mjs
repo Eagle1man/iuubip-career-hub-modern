@@ -34,3 +34,36 @@ test('CSS: блок тёмной темы, системное предпочте
   assert.ok(html.includes('--navy:#0e2f5f') && html.includes('--gold:#c9a227'), 'фирменные цвета потеряны');
   assert.ok(html.includes('color:var(--heading)'), 'заголовки не переключаются на тему');
 });
+
+// Контраст приглушённого текста: именно на нём Lighthouse нашёл 4.47:1
+// после перехода на светлый дизайн. Считаем по формуле WCAG, порог — 4.5:1.
+function luminance(hex) {
+  const c = [0, 2, 4].map((i) => parseInt(hex.slice(1 + i, 3 + i), 16) / 255)
+    .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function contrast(a, b) {
+  const la = luminance(a), lb = luminance(b);
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+
+test('контраст приглушённого текста не ниже 4.5:1 в обеих темах', () => {
+  const root = html.slice(html.indexOf(':root{'), html.indexOf('html[data-theme=dark]'));
+  const mutedLight = root.match(/--muted:(#[0-9a-f]{6})/i)[1];
+  assert.ok(
+    contrast(mutedLight, '#f4f6fb') >= 4.5,
+    `приглушённый текст ${mutedLight} на фоне страницы: ${contrast(mutedLight, '#f4f6fb').toFixed(2)}:1`,
+  );
+  assert.ok(
+    contrast(mutedLight, '#ffffff') >= 4.5,
+    `приглушённый текст ${mutedLight} на карточке: ${contrast(mutedLight, '#ffffff').toFixed(2)}:1`,
+  );
+
+  const dark = html.match(/html\[data-theme=dark\]\{([^}]*)\}/)[1];
+  const mutedDark = dark.match(/--muted:(#[0-9a-f]{6})/i)[1];
+  const cardDark = dark.match(/--card:(#[0-9a-f]{6})/i)[1];
+  assert.ok(
+    contrast(mutedDark, cardDark) >= 4.5,
+    `приглушённый текст ${mutedDark} на карточке тёмной темы: ${contrast(mutedDark, cardDark).toFixed(2)}:1`,
+  );
+});
