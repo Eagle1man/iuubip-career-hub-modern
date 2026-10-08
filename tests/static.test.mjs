@@ -25,7 +25,7 @@ test('head: метатеги для мобильных и безопасност
   const viewport = doc.querySelector('meta[name=viewport]').getAttribute('content');
   assert.match(viewport, /width=device-width/);
   assert.match(viewport, /viewport-fit=cover/, 'нужен viewport-fit=cover для safe-area');
-  assert.equal(doc.querySelector('meta[name=theme-color]').content, '#0e2f5f');
+  assert.equal(doc.querySelector('meta[name=theme-color]').content, '#0c5f97');
   assert.match(doc.querySelector('meta[name=referrer]').content, /strict-origin/);
   const csp = doc.querySelector('meta[http-equiv="Content-Security-Policy"]').content;
   assert.match(csp, /default-src 'self'/);
@@ -129,11 +129,25 @@ test('бюджет страницы: один файл, разумный раз�
   assert.ok(INDEX.endsWith('index.html'));
 });
 
-test('фирменные цвета ИУБиП, старый «серый» стиль удалён', () => {
-  assert.ok(!/font-family:Georgia/.test(css), 'шрифт Georgia из старой вёрстки не должен остаться');
+test('дизайн-система взятого образца на месте', () => {
+  // палитра romanraw12.github.io/centr-kariery-hub — снята с самой страницы
+  for (const [name, value] of [
+    ['--surface', '#ebf7ff'], ['--ink', '#06172d'], ['--ink-soft', '#4b688b'],
+    ['--line', '#cfe0ed'], ['--navy', '#0c5f97'], ['--navy-deep', '#063d6b'],
+    ['--azure', '#097aae'], ['--azure-soft', '#dbf1ff'], ['--amber', '#e5b02a'],
+  ]) {
+    assert.ok(css.includes(`${name}:${value}`), `токен ${name}:${value} из образца потерян`);
+  }
   assert.ok(!/#f2f3f5/.test(css), 'старый серый фон не должен остаться');
-  assert.match(css, /--navy:#0e2f5f/, 'фирменный синий ИУБиП');
-  assert.match(css, /--gold:#c9a227/, 'фирменное золото ИУБиП');
+});
+
+test('шрифт-display образца — засечный, на заголовках', () => {
+  assert.match(css, /--font-display:Georgia/, 'образец использует Georgia для заголовков');
+  assert.match(css, /h1,h2,h3,h4\{font-family:var\(--font-display\)/, 'заголовки на display-шрифте');
+  assert.match(css, /\.hero\{[^}]*background:var\(--navy\)/, 'hero — синяя заливка, как в образце');
+  assert.match(css, /\.hero\{[^}]*border-bottom:4px solid var\(--amber\)/, 'янтарная линия под hero');
+  assert.match(css, /\.panel\{[^}]*border-radius:var\(--radius-card\)/, 'панели — скругление карточки');
+  assert.match(css, /\.btn\{[^}]*border-radius:var\(--radius-control\)/, 'кнопки-капсулы');
 });
 
 test('разметка и CSS сбалансированы', () => {

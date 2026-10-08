@@ -11,8 +11,14 @@ const dom = new JSDOM(html);
 const doc = dom.window.document;
 const markup = html.slice(0, html.indexOf('<script>'));
 
-test('старый шрифт Georgia вычищен и из CSS, и из инлайн-стилей', () => {
-  assert.ok(!/Georgia/.test(html), 'в файле остался шрифт Georgia из старой вёрстки');
+test('шрифт-display задан один раз в токенах, а не вразброс по разметке', () => {
+  // Georgia теперь часть дизайна (засечные заголовки), но она должна жить
+  // в переменной --font-display, а не дублироваться в кусках вёрстки
+  assert.match(html, /--font-display:Georgia/, 'нет --font-display с засечным шрифтом');
+  assert.ok(
+    !/font-family\s*:\s*(Georgia|["']?Georgia)/.test(html.slice(html.indexOf('</style>'))),
+    'Georgia прописан прямо в разметке вместо переменной',
+  );
 });
 
 test('нет заглушек href="#" — все внутренние ссылки ведут на существующие разделы', () => {
