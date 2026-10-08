@@ -959,6 +959,11 @@ if(RB.step===1&&!RB.acad){showToast('Сначала выберите вашу а
 if(RB.step===2&&(!RB.name.trim()||!RB.phone.trim())){showToast('Укажите имя и телефон — иначе работодатель не свяжется');return}
 if(RB.step===3&&!RB.position&&!RB.customPos.trim()){showToast('Выберите желаемую должность');return}
 if(RB.step<5)RB.step++;
+else{rbCollect();rbRender();var rd=document.getElementById('rbReady');
+if(rd){rd.scrollIntoView({behavior:'smooth',block:'center'});
+rd.style.outline='2px solid var(--azure)';rd.style.outlineOffset='4px';
+setTimeout(function(){rd.style.outline=''},1500);}
+showToast('Резюме готово — скачайте файл Word или скопируйте текст');return}
 }else{if(RB.step>1)RB.step--}
 rbRender();
 document.getElementById('resume').scrollIntoView({behavior:'smooth'});
@@ -1012,7 +1017,12 @@ const pos=RB.customPos.trim()||RB.position||'—';
 const skills=RB.skills.concat(RB.customSkills.split(',').map(s=>s.trim()).filter(Boolean));
 b.innerHTML='<p style="margin-bottom:12px"><b>Шаг 5.</b> Резюме собрано. Скачайте в Word или скопируйте текст.</p>'
 +'<div class="rb-hint">Перед скачиванием проверьте: имя и телефон без опечаток, должность совпадает с вакансией, нет пустых разделов. Такой файл можно сразу прикладывать к отклику.</div>'
-+'<div class="rb-preview">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo" style="float:right;margin:0 0 10px 14px">':'')+'<h3>'+esc(RB.name||'Ваше имя')+'</h3><div style="color:var(--muted);font-size:13px">'+esc(a?a.name:'')+'</div>'
++'<div class="field"><label for="rbPhotoFile2">Фото для резюме (по желанию, до 2 МБ)</label>'
++'<input id="rbPhotoFile2" type="file" accept="image/*" onchange="rbPhoto(this)">'
++(RB.photo?'<div id="rbPhotoPrevWrap" style="margin-top:12px"><img src="'+RB.photo+'" class="rb-photo"></div>'
++'<button type="button" class="btn btn-outline" style="margin-top:10px" onclick="rbPhotoRemove()">Убрать фото</button>':'')
++'</div>'
++'<div id="rbReady" class="rb-preview">'+(RB.photo?'<img src="'+RB.photo+'" class="rb-photo" style="float:right;margin:0 0 10px 14px">':'')+'<h3>'+esc(RB.name||'Ваше имя')+'</h3><div style="color:var(--muted);font-size:13px">'+esc(a?a.name:'')+'</div>'
 +'<div class="pos">Желаемая должность: '+esc(pos)+' · '+esc(RB.employment)+(RB.salary.trim()?'; '+esc(RB.salary):'')+'</div>'
 +'<div class="sec"><b>Контакты</b>'+esc(RB.phone)+(RB.email?', '+esc(RB.email):'')+' · '+esc(RB.city)+(RB.birth.trim()?'; род. '+esc(RB.birth):'')+'</div>'
 +'<div class="sec"><b>Образование</b>'+esc(RB.program||'—')+', '+esc(RB.course)+', выпуск '+esc(RB.year)+'</div>'
@@ -1025,6 +1035,7 @@ b.innerHTML='<p style="margin-bottom:12px"><b>Шаг 5.</b> Резюме соб�
 +'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">'
 +'<button class="btn btn-navy" onclick="rbDownload()">Скачать в Word (.doc)</button>'
 +'<button class="btn btn-outline" onclick="rbCopy()">Скопировать текст</button>'
++'<button class="btn btn-outline" onclick="rbShowText()">Показать текст</button>'
 +'<button class="btn btn-outline" onclick="goTab(\'vac\');openAcad(\''+(RB.acad||'all')+'\')">Вакансии моей академии</button></div>';
 }
 }
@@ -1061,6 +1072,24 @@ return "РЕЗЮМЕ\n"+(RB.name||"")+"\nЖелаемая должность: "+
 +(RB.courses.trim()?"Курсы: "+RB.courses.trim()+"\n":"")
 +(RB.about.trim()?"О себе: "+RB.about.trim()+"\n":"");
 }
+function rbPhotoRemove(){RB.photo=null;rbRender();showToast('Фото убрано из резюме')}
+function rbShowText(){
+var old=document.getElementById('rbTextModal');if(old)old.remove();
+var m=document.createElement('div');
+m.innerHTML='<div id="rbTextModal" style="position:fixed;inset:0;background:rgba(6,23,45,.5);z-index:210;display:flex;align-items:center;justify-content:center;padding:16px"></div>';
+var box=m.firstElementChild;
+box.innerHTML='<div class="panel" style="max-width:560px;width:100%;margin:0"><h2>Текст резюме</h2>'
++'<p class="lead">Выделите всё и скопируйте: Ctrl+C или через контекстное меню.</p>'
++'<textarea id="rbTextOut" style="width:100%;min-height:260px;font-size:14px" readonly></textarea>'
++'<div class="btn-row" style="margin-top:14px"><button class="btn btn-navy" onclick="rbSelectText()">Выделить всё</button>'
++'<button class="btn btn-outline" onclick="document.getElementById(\'rbTextModal\').remove()">Закрыть</button></div></div>';
+document.body.appendChild(box);
+document.getElementById('rbTextOut').value=rbResumeText();
+box.addEventListener('click',function(e){if(e.target===box)box.remove()});
+document.getElementById('rbTextOut').focus();
+}
+function rbSelectText(){var t=document.getElementById('rbTextOut');if(!t)return;t.focus();t.select();
+try{document.execCommand('copy');showToast('Текст выделен и скопирован')}catch(e){}}
 function rbCopy(){
 const done=()=>showToast('Текст резюме скопирован');
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(rbResumeText()).then(done,()=>showToast('Не вышло скопировать — выделите текст вручную'))}
