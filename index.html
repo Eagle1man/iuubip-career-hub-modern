@@ -367,12 +367,13 @@ html[data-theme=dark] .theme-circle .theme-sun{display:block}
 .orb:hover{box-shadow:0 14px 34px rgba(12,95,151,.42);transform:scale(1.06)}
 .orb svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;grid-area:1/1}
 html[data-theme=dark] .orb{background:#fff;color:#141414;box-shadow:0 10px 28px rgba(0,0,0,.65)}
+.orb .orb-gear,.orb .orb-x{grid-area:1/1}
 .orb .orb-x{display:none}
 .orb-wrap.open .orb-gear{display:none}
 .orb-wrap.open .orb-x{display:block}
 /* Окно разделов: раскрывается кругом из-под орба */
-.menu-drop{position:absolute;right:0;bottom:0;width:304px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-card);box-shadow:var(--shadow-lg);padding:12px;clip-path:circle(0% at calc(100% - 2.75rem));transition:clip-path .5s cubic-bezier(.22,.61,.36,1);pointer-events:none}
-.orb-wrap.open .menu-drop{clip-path:circle(150% at calc(100% - 2.75rem));pointer-events:auto}
+.menu-drop{position:absolute;right:0;bottom:0;width:min(304px,calc(100vw - 28px));background:var(--card);border:1px solid var(--line);border-radius:var(--radius-card);box-shadow:var(--shadow-lg);padding:12px;clip-path:circle(0% at calc(100% - 2.75rem));transition:clip-path .5s cubic-bezier(.22,.61,.36,1),visibility 0s linear .5s;pointer-events:none;visibility:hidden}
+.orb-wrap.open .menu-drop{clip-path:circle(150% at calc(100% - 2.75rem));pointer-events:auto;visibility:visible;transition:clip-path .5s cubic-bezier(.22,.61,.36,1),visibility 0s}
 .orb-menu-head{display:flex;align-items:center;justify-content:space-between;padding:8px 12px}
 .orb-menu-head .caption{text-transform:uppercase;letter-spacing:.16em}
 .orb-close{width:28px;height:28px;display:grid;place-items:center;background:none;border:0;color:var(--ink-soft);cursor:pointer;border-radius:8px}
@@ -386,7 +387,9 @@ html[data-theme=dark] .orb{background:#fff;color:#141414;box-shadow:0 10px 28px 
 .orb-arrow{width:16px;height:16px;stroke:var(--ink-soft);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .orb-list button:hover .orb-arrow{stroke:var(--azure)}
 .orb-list button.active .orb-arrow{stroke:var(--card)}
-@media (min-width:861px){.orb-wrap{right:24px;top:50%;bottom:auto;transform:translateY(-50%)}}
+@media (min-width:768px){.orb-wrap{right:24px;top:50%;bottom:auto;transform:translateY(-50%)}
+  .menu-drop{top:50%;bottom:auto;transform:translateY(-50%)}
+  .orb-wrap.open .menu-drop{transform:translateY(-50%)}}
 /* Иллюстрации карточек — плитки как в образце */
 .art-tile{display:block;flex:none;width:80px;line-height:0}
 .art-tile svg{width:100%;height:auto}
@@ -401,7 +404,8 @@ html[data-theme=dark] .orb{background:#fff;color:#141414;box-shadow:0 10px 28px 
 .acad-card .go{margin-top:0;display:inline-flex;align-items:center;padding:6px 14px;border:1px solid var(--line);border-radius:var(--radius-control);color:var(--ink-soft);font-size:13px;transition:border-color .15s,color .15s}
 .acad-card:hover .go{border-color:var(--azure);color:var(--azure)}
 @media (max-width:860px){
-  .orb-wrap{display:none}
+  /* орб остаётся, но встаёт выше нижней панели, чтобы не перекрываться */
+  .orb-wrap{right:14px;bottom:calc(78px + env(safe-area-inset-bottom,0px))}
   .art-tile{width:64px}
   .acad-card{padding:18px}
 }
