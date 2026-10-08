@@ -58,6 +58,55 @@ function contrast(a, b) {
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
 
+test('линия под hero мягко пульсирует и в светлой, и в тёмной теме', () => {
+  const css = html.slice(html.indexOf('<style>'), html.indexOf('</style>'));
+  const heroRule = css.match(/\.hero\{[^}]*border-bottom:4px solid var\(--amber\)[^}]*\}/);
+  assert.ok(heroRule, 'янтарная линия под hero потеряна');
+  assert.match(heroRule[0], /animation:rulePulse/, 'линия должна пульсировать');
+  assert.match(
+    css,
+    /@keyframes rulePulse\{0%,100%\{border-bottom-color:var\(--amber\)\}50%\{border-bottom-color:var\(--rule-dim\)\}\}/,
+    'нет кадров пульсации',
+  );
+
+  // приглушённый цвет должен быть свой в каждой теме, иначе тёмная пульсация не видна
+  const root = html.slice(html.indexOf(':root{'), html.indexOf('html[data-theme=dark]'));
+  assert.match(root, /--rule-dim:#[0-9a-f]{6}/i, 'в светлой теме нет --rule-dim');
+  const dark = html.match(/html\[data-theme=dark\]\{([^}]*)\}/)[1];
+  assert.match(dark, /--rule-dim:rgba\(/, 'в тёмной теме свой --rule-dim');
+
+  // и пульсация обязана выключаться настройкой «меньше движения»
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion:reduce\)\{\*\{animation:none!important/,
+    'пульсация не отключается при prefers-reduced-motion',
+  );
+  // кроме неё самой: она меняет только цвет, без движения, поэтому просим разрешения
+  // и оставляем — иначе на машине с «меньше движений» линия не мигает вовсе
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion:reduce\)\{[^}]*\}\s*\/\*[^*]*\*\/\s*\.hero\{animation:rulePulse 3\.6s ease-in-out infinite!important\}/,
+    'линия под hero должна мигать и при prefers-reduced-motion',
+  );
+});
+
+test('глобус на белой плитке виден и в тёмной теме', () => {
+  const css = html.slice(html.indexOf('<style>'), html.indexOf('</style>'));
+  const dark = html.match(/html\[data-theme=dark\]\{([^}]*)\}/)[1];
+
+  // в тёмной теме --azure становится белым, а плитка остаётся белой:
+  // прежнее правило красило линии глобуса в цвет плитки
+  assert.match(dark, /--azure:#fff/, 'ожидалось, что --azure в тёмной теме белый');
+  assert.ok(
+    !/html\[data-theme=dark\] \.head-logo svg/.test(css),
+    'тёмная тема не должна перекрашивать линии глобуса на белой плитке',
+  );
+
+  // цвет линий берётся из navy: #0c5f97 на белом в светлой, #262626 на белом в тёмной
+  assert.match(css, /\.logo-tile svg ellipse,\.logo-tile svg line,\.logo-tile svg g\{stroke:var\(--navy\)\}/);
+  assert.match(dark, /--navy:#262626/, 'в тёмной теме navy должен остаться тёмным');
+});
+
 test('контраст приглушённого текста не ниже 4.5:1 в обеих темах', () => {
   const root = html.slice(html.indexOf(':root{'), html.indexOf('html[data-theme=dark]'));
   const mutedLight = root.match(/--ink-soft:(#[0-9a-f]{6})/i)[1];

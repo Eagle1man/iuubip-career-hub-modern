@@ -30,19 +30,22 @@
   --link:var(--azure);--link-hover:var(--azure-deep);
   --navy-050:var(--azure-soft);--navy-100:#b8dcf2;--navy-600:var(--azure);--navy-700:var(--azure-deep);
   --gold:var(--amber);--gold-on:var(--amber);--gold-050:var(--amber-soft);--gold-light:var(--amber);
+  /* приглушённый янтарь для пульсации линии под шапкой hero */
+  --rule-dim:#a8801a;
   --ok-bg:var(--azure-soft);--ok-line:#b8dcf2;--ok-ink:var(--azure-deep);--hint-ink:#7a5a06;
   --bnav-bg:rgba(255,255,255,.95);--line-2:#f0f6fb;
   /* янтарь и светлый текст для тёмно-синих поверхностей: контраст >= 4.5:1 */
   --amber-t:#fad066;--on-navy:#cfe0ed;color-scheme:light;
 }
-html[data-theme=dark]{color-scheme:dark;--surface:#0f0f0f;--card:#1f1f1f;--ink:#f5f5f5;--ink-soft:#adadad;--line:#383838;--line-strong:#595959;--navy:#262626;--navy-deep:#171717;--azure:#fff;--azure-deep:#e0e0e0;--azure-soft:#2e2e2e;--amber:#fff;--amber-soft:#2e2e2e;--navy-100:#333;--navy-050:#262626;--line-2:#242424;--ok-bg:#17303f;--ok-line:#2a4a5e;--ok-ink:#9fd0ee;--hint-ink:#d8c48a;--bnav-bg:rgba(31,31,31,.95);--amber-t:#fff;--on-navy:#c8c8c8;--radius-card:20px}
-@media (prefers-color-scheme:dark){html:not([data-theme]){color-scheme:dark;--surface:#0f0f0f;--card:#1f1f1f;--ink:#f5f5f5;--ink-soft:#adadad;--line:#383838;--line-strong:#595959;--navy:#262626;--navy-deep:#171717;--azure:#fff;--azure-deep:#e0e0e0;--azure-soft:#2e2e2e;--amber:#fff;--amber-soft:#2e2e2e;--navy-100:#333;--navy-050:#262626;--line-2:#242424;--ok-bg:#17303f;--ok-line:#2a4a5e;--ok-ink:#9fd0ee;--hint-ink:#d8c48a;--bnav-bg:rgba(31,31,31,.95);--amber-t:#fff;--on-navy:#c8c8c8;--radius-card:20px}}
+html[data-theme=dark]{color-scheme:dark;--surface:#0f0f0f;--card:#1f1f1f;--ink:#f5f5f5;--ink-soft:#adadad;--line:#383838;--line-strong:#595959;--navy:#262626;--navy-deep:#171717;--azure:#fff;--azure-deep:#e0e0e0;--azure-soft:#2e2e2e;--amber:#fff;--amber-soft:#2e2e2e;--navy-100:#333;--navy-050:#262626;--line-2:#242424;--ok-bg:#17303f;--ok-line:#2a4a5e;--ok-ink:#9fd0ee;--hint-ink:#d8c48a;--bnav-bg:rgba(31,31,31,.95);--amber-t:#fff;--on-navy:#c8c8c8;--rule-dim:rgba(255,255,255,.45);--radius-card:20px}
+@media (prefers-color-scheme:dark){html:not([data-theme]){color-scheme:dark;--surface:#0f0f0f;--card:#1f1f1f;--ink:#f5f5f5;--ink-soft:#adadad;--line:#383838;--line-strong:#595959;--navy:#262626;--navy-deep:#171717;--azure:#fff;--azure-deep:#e0e0e0;--azure-soft:#2e2e2e;--amber:#fff;--amber-soft:#2e2e2e;--navy-100:#333;--navy-050:#262626;--line-2:#242424;--ok-bg:#17303f;--ok-line:#2a4a5e;--ok-ink:#9fd0ee;--hint-ink:#d8c48a;--bnav-bg:rgba(31,31,31,.95);--amber-t:#fff;--on-navy:#c8c8c8;--rule-dim:rgba(255,255,255,.45);--radius-card:20px}}
 html[data-theme=dark] .btn-navy,html[data-theme=dark] .btn-gold{background:var(--azure);color:var(--card)}
 html[data-theme=dark] .hero,html[data-theme=dark] footer{border-bottom-color:var(--amber)}
 html[data-theme=dark] .track-hero{background:var(--card);border:1px solid var(--line);color:var(--ink)}
 html[data-theme=dark] input{accent-color:var(--azure)}
 html[data-theme=dark] .rb-opt:has(input:checked){border-color:var(--azure)}
-html[data-theme=dark] .head-logo svg ellipse,html[data-theme=dark] .head-logo svg line{stroke:var(--azure)}
+/* Знак на белой плитке: в тёмной теме --azure становится белым, а плитка остаётся
+   белой — линии глобуса растворились бы. Правило цвета держим ниже, у .logo-tile. */
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--surface);color:var(--ink);line-height:1.65;font-size:15px;-webkit-font-smoothing:antialiased}
 a{color:var(--link);text-decoration:none}
@@ -78,9 +81,9 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.25;col
 .head-inner{max-width:var(--maxw);margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap}
 .head-logo{display:flex;align-items:center;gap:16px;text-decoration:none;min-width:0}
 .logo-tile{width:80px;height:80px;border:1px solid var(--line);border-radius:var(--radius-card);background:#fff;display:grid;place-items:center;overflow:hidden;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.logo-tile svg{width:100%;height:auto}
-.logo-tile svg ellipse,.logo-tile svg line{stroke:var(--navy)}
-.logo-tile svg text{stroke:#fff}
+.logo-tile svg{width:86%;height:auto}
+.logo-tile svg ellipse,.logo-tile svg line,.logo-tile svg g{stroke:var(--navy)}
+.logo-tile svg text{stroke:none}
 .head-titles h1{font-family:var(--font-display);font-size:1.65rem;line-height:1.24;letter-spacing:normal;color:var(--heading)}
 @media (min-width:640px){.logo-tile{width:96px;height:96px}.head-titles h1{font-size:1.85rem}}
 .head-titles p{font-size:12.5px;color:var(--ink-soft);letter-spacing:.16em;text-transform:uppercase;margin-top:4px}
@@ -100,7 +103,8 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.25;col
 /* Нижняя навигация (мобайл) */
 .bnav{display:none}
 /* Hero */
-.hero{background:var(--navy);color:#fff;padding:48px 0 64px;border-bottom:4px solid var(--amber)}
+.hero{background:var(--navy);color:#fff;padding:48px 0 64px;border-bottom:4px solid var(--amber);animation:rulePulse 3.6s ease-in-out infinite}
+@keyframes rulePulse{0%,100%{border-bottom-color:var(--amber)}50%{border-bottom-color:var(--rule-dim)}}
 @media (min-width:768px){.hero{padding:64px 0 80px}}
 .hero-inner{max-width:var(--maxw);margin:0 auto;padding:0 16px}
 .hero .eyebrow{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-t);margin:0 0 12px}
@@ -273,7 +277,10 @@ footer{background:var(--navy);color:#fff;padding:56px 0;margin-top:20px}
 #toast{position:fixed;left:50%;transform:translateX(-50%) translateY(20px);bottom:28px;background:var(--azure);color:#fff;padding:13px 22px;border-radius:var(--radius-control);font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:300;max-width:90vw;text-align:center;box-shadow:var(--shadow-lg)}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 :focus-visible{outline:2px solid var(--azure);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  /* Линия под hero дышит только сменой цвета, без сдвига — просим разрешения
+     и оставляем мигать даже при системном «меньше движений». Остальное выключено. */
+  .hero{animation:rulePulse 3.6s ease-in-out infinite!important}}
 /* ===== Планшет ===== */
 @media (max-width:1024px){
   .work{grid-template-columns:1fr}
@@ -421,12 +428,15 @@ html[data-theme=dark] .orb{background:#fff;color:#141414;box-shadow:0 10px 28px 
 </div></div>
 <header class="site-head"><div class="head-inner">
 <a class="head-logo" href="#vac" onclick="goTab('vac');return false">
-<span class="logo-tile"><svg width="96" height="62" viewBox="0 0 96 62" role="img" aria-label="Логотип Южного университета (ИУБиП)">
-<ellipse cx="48" cy="31" rx="44" ry="27" fill="none" stroke="#0e2f5f" stroke-width="2.5"/>
-<ellipse cx="48" cy="31" rx="26" ry="27" fill="none" stroke="#0e2f5f" stroke-width="1.4"/>
-<ellipse cx="48" cy="31" rx="10" ry="27" fill="none" stroke="#0e2f5f" stroke-width="1.4"/>
-<line x1="5" y1="31" x2="91" y2="31" stroke="#0e2f5f" stroke-width="1.4"/>
-<text x="48" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="900" fill="#c8102e" stroke="#ffffff" stroke-width="4" paint-order="stroke">ИУБиП</text>
+<span class="logo-tile"><svg viewBox="0 0 200 120" role="img" aria-label="Логотип Южного университета (ИУБиП)">
+<g fill="none" stroke="#0e2f5f" stroke-width="5">
+<ellipse cx="100" cy="60" rx="92" ry="54"/>
+<ellipse cx="100" cy="60" rx="50" ry="54" stroke-width="3"/>
+<ellipse cx="100" cy="60" rx="19" ry="54" stroke-width="3"/>
+<line x1="10" y1="60" x2="190" y2="60" stroke-width="3"/>
+</g>
+<path d="M72 18h56l-28 68z" fill="#e2402c"/>
+<text x="100" y="58" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="900" fill="#ffffff" stroke="none">ЮУ</text>
 </svg></span>
 <span class="head-titles"><h1>ЮЖНЫЙ УНИВЕРСИТЕТ (ИУБиП)</h1><p>Центр карьеры</p></span></a>
 <div class="head-phones">

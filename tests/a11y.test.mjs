@@ -78,6 +78,24 @@ test('декоративные иконки скрыты от скринриде
   assert.ok(logo.getAttribute('aria-label'));
 });
 
+test('логотип в плитке — глобус с красным треугольником, а не надпись ИУБиП', () => {
+  const logo = doc.querySelector('.head-logo svg');
+  assert.ok(logo, 'логотип в шапке пропал');
+  const text = logo.textContent.trim();
+  assert.ok(!/ИУБиП/i.test(text), 'надпись ИУБиП должна быть заменена на знак ЮУ');
+  assert.equal(text, 'ЮУ', 'в знаке должны быть буквы ЮУ');
+  // красный треугольник-взнак
+  const mark = logo.querySelector('path');
+  assert.ok(mark, 'нет треугольника');
+  assert.equal(mark.getAttribute('fill'), '#e2402c');
+  // сетка глобуса: три вертикали + экватор
+  assert.equal(logo.querySelectorAll('ellipse').length, 3, 'нет линий меридианов');
+  assert.ok(logo.querySelector('line'), 'нет экватора');
+  // знак должен помещаться в белую плитку без обрезки
+  assert.match(logo.getAttribute('viewBox'), /^0 0 200 120$/, 'ломается масштаб знака');
+  assert.ok(html.includes('.logo-tile svg{width:86%;height:auto}'), 'знак не вписан в плитку');
+});
+
 test('иерархия заголовков без пропусков уровней', () => {
   let prev = 0;
   const breaks = [];
