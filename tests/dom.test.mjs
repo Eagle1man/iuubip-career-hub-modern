@@ -23,7 +23,9 @@ test('карточки академий: 5 штук, у каждой счётч�
   assert.equal(cards.length, window.eval('ACADS.length'));
   assert.equal(cards.length, 5);
   for (const c of cards) {
-    assert.ok(c.querySelector('h3').textContent.length > 5, 'у карточки нет названия академии');
+    assert.ok(c.querySelector('.acad-head').textContent.length > 5, 'у карточки нет названия академии');
+    assert.ok(c.querySelector('.art-tile svg'), 'у карточки нет иллюстрации');
+    assert.ok(c.querySelector('.card-arrow'), 'у названия нет стрелки');
     assert.match(c.querySelector('.cnt').textContent, /\d+\s+ваканси/);
     assert.ok(c.querySelector('.go').textContent.includes('Открыть'));
   }

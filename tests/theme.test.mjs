@@ -4,10 +4,17 @@ import { makeDom, html } from './helpers.mjs';
 
 const { window, document } = makeDom();
 
-test('кнопки переключателя темы: топбар и шторка «Ещё»', () => {
+test('кнопки переключателя темы: шапка, топбар и шторка «Ещё»', () => {
   const btns = [...document.querySelectorAll('[data-theme-btn]')];
-  assert.equal(btns.length, 2);
-  for (const b of btns) assert.match(b.textContent, /Тёмная тема|Светлая тема/);
+  assert.equal(btns.length, 3, 'кнопка темы должна быть в шапке, топбаре и шторке');
+  // у круглой кнопки в шапке нет подписи — только иконка и aria-label
+  const withLabel = btns.filter((b) => !b.hasAttribute('data-theme-ico'));
+  assert.equal(withLabel.length, 2);
+  for (const b of withLabel) assert.match(b.textContent, /Тёмная тема|Светлая тема/);
+  const circle = document.querySelector('[data-theme-ico]');
+  assert.equal(circle.className, 'theme-circle', 'в шапке круглая кнопка');
+  assert.match(circle.getAttribute('aria-label'), /тему/, 'у круглой кнопки есть aria-label');
+  assert.equal(circle.querySelectorAll('svg').length, 2, 'иконки луны и солнца');
 });
 
 test('переключение темы: data-theme, кнопки, theme-color, localStorage', () => {
@@ -19,16 +26,20 @@ test('переключение темы: data-theme, кнопки, theme-color, 
   const dark = now === 'dark';
   for (const b of document.querySelectorAll('[data-theme-btn]')) {
     assert.equal(b.getAttribute('aria-pressed'), String(dark));
-    assert.match(b.textContent, dark ? /Светлая тема/ : /Тёмная тема/);
+    if (b.hasAttribute('data-theme-ico')) {
+      assert.match(b.getAttribute('aria-label'), /тему/);
+    } else {
+      assert.match(b.textContent, dark ? /Светлая тема/ : /Тёмная тема/);
+    }
   }
-  assert.equal(document.querySelector('meta[name=theme-color]').content, dark ? '#0a0a0a' : '#0c5f97');
+  assert.equal(document.querySelector('meta[name=theme-color]').content, dark ? '#0f0f0f' : '#0c5f97');
   assert.equal(window.localStorage.getItem('ccTheme'), now);
   window.eval('themeToggle()');
   assert.equal(document.documentElement.getAttribute('data-theme'), before);
 });
 
 test('CSS: блок тёмной темы, системное предпочтение и нетронутая светлая палитра', () => {
-  assert.ok(html.includes('html[data-theme=dark]{color-scheme:dark;--surface:#0a0a0a'), 'нет блока тёмной темы');
+  assert.ok(html.includes('html[data-theme=dark]{color-scheme:dark;--surface:#0f0f0f'), 'нет блока тёмной темы');
   assert.ok(html.includes('@media (prefers-color-scheme:dark){html:not([data-theme])'), 'нет fallback для системной тёмной темы');
   assert.ok(html.includes('--surface:#ebf7ff;--card:#fff'), 'светлая палитра образца изменена');
   assert.ok(html.includes('--navy:#0c5f97') && html.includes('--amber:#e5b02a'), 'цвета образца потеряны');
